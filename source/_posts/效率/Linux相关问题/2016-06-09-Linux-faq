@@ -1,0 +1,14 @@
+---
+layout: post
+title: Linux相关问题
+category: 效率
+tags: [faq]
+keywords:
+description:
+---
+
+## 查看当前路径
+`pwd`
+
+## 如何使用SSH传递文件
+`scp`可以方便的实现通过ssh传递文件
