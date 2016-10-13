@@ -1,10 +1,11 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-25
 title: 数据持久化
 category: Android
 tags: [android,data_persistence]
 keywords:
-description:
+description: 存储数据主要有三种方式:<br>1. 存储到文件<br>2. SharedPreferences存储<br>3. SQLite
 ---
 
 ## 数据存储到文件

@@ -1,10 +1,11 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-26
 title: 跨程序共享数据
 category: Android
 tags: [android,android_data]
 keywords:
-description:
+description: 可以利用`getContentResolver()`获取`ContentResolver`. `ContentResolver`中提供了一系列方法用于对数据进行CRUD操作.
 ---
 
 ## ContentProvider

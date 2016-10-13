@@ -1,10 +1,11 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-07-07
 title: 简易计算器开发
 category: Android
 tags: [android,android_project]
 keywords:
-description:
+description: 一个简易计算器的开发中遇到的EditText相关问题.
 ---
 
 ## edittext按回车时操作
@@ -31,6 +32,6 @@ description:
 
 listfragment自己编写listadapter中button总是监听最后一个item中的数据。
 
-![](/assets/img/posts/listview_button_click.gif)
+![](http://oezmbgg4j.bkt.clouddn.com/listview_button_click.gif)
 
 无论点击哪一个button都是计算最后一行。

@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-25
 title: AlertDialog
 category: Android
 tags: [android,android_control]

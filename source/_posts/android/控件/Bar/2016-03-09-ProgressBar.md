@@ -1,10 +1,11 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-09
 title: ProgressBar和ProgressDialog
 category: Android
 tags: [android,android_bar]
 keywords:
-description:
+description: 各种类型进度条的samples, 包括ProgressBar, ProgressDialog 以及如何自定义ProgressBar.
 ---
 
 ## 分类
@@ -74,7 +75,7 @@ public void onClick(View v) {
 }
 ```
 
-![](assets/img/posts/progressbar.gif)
+![](http://oezmbgg4j.bkt.clouddn.com/progressbar.gif)
 
 ## ProgressDialog
 
@@ -122,7 +123,7 @@ case R.id.showDialog:{
 }
 ```
 
-![](assets/img/posts/progressdialog.gif)
+![](http://oezmbgg4j.bkt.clouddn.com/progressdialog.gif)
 
 ## 自定义ProgressBar的样式
 

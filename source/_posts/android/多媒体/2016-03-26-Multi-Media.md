@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-26
 title: Notification初步
 category: Android
 tags: [android,android_notification]

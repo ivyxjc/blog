@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-07-06
 title: CriminalIntent程序中ListFragment相关内容
 category: Android
 tags: [android,android_adapter]

@@ -1,11 +1,12 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-09-18
 title: RecyclerView
 category: Android
 tags: [android,UI,RecyclerView]
 keywords:
 description:
---
+---
 
 ## RecyclerView 设置布局格式
 ```java

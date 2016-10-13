@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-02-22
 title: Layout_Gravity和Gravity
 category: Android
 tags: [android,android_layout]

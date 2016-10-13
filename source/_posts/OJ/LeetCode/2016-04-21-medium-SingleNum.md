@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-04-21
 title: LeetCode SingleNum 136,127,260
 category: OJ
 tags: [quicksort,sort,bit manipulation]

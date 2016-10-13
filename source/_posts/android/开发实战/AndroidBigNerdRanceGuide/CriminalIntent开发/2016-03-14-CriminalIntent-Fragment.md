@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-14
 title: CriminalIntent程序中Fragment相关内容
 category: Android
 tags: [android,android_UI]

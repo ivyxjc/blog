@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Ivyxjc
 subtitle:
 description:
-author: John Doe
+author: Ivyxjc
 language:
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://www.ivyxjc.xyz/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -40,8 +40,10 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
+
+mathjax: true
 
 # Category & Tag
 default_category: uncategorized
@@ -63,9 +65,23 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: free2mind
+theme: maupassant
+
+# Extensions
+## Plugins: http://hexo.io/plugins/
+#RSS订阅
+plugin:
+- hexo-generator-feed
+#Feed Atom
+feed:
+type: atom
+path: atom.xml
+limit: 20
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: https://git.coding.net/ivyxjc/ivyxjc.coding.net.git,coding-pages
+  branch: master

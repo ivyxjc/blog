@@ -1,6 +1,7 @@
 ---
-layout: post
-title: 
+author: ivyxjc
+date: 2016-02-18
+title:
 category: OJ
 tags: [格式化输出,onlinejudge,io,线段树,区间查询]
 keywords:
@@ -12,7 +13,7 @@ description:
 ## A:Infinite Sequence
 
 
-A题比较简单,主要就利用公式$$$\sum_{k=1}^n k=\frac {(1+n)*n}{2}$$$来确定距离所要求的数字最近的一个1所在的位置。然后就可得到该数值了。<br>
+A题比较简单,主要就利用公式$$ \sum_{k=1}^n k=\frac {(1+n)*n}{2} $$来确定距离所要求的数字最近的一个1所在的位置。然后就可得到该数值了。<br>
 代码如下：
 
 ### 代码
@@ -144,7 +145,7 @@ try{
 public class Main {  
     private static Reader reader = null;  
     private static Writer writer = null;  
-  
+
     public static void main(String[] args) {  
         reader = new InputStreamReader(System.in);  
         writer = new OutputStreamWriter(System.out);  
@@ -157,11 +158,11 @@ public class Main {
             e.printStackTrace();  
         }  
     }  
-  
-    /** 
-     * 获取键盘输入的整数 
+
+    /**
+     * 获取键盘输入的整数
      *  
-     * @return 输入的整数 
+     * @return 输入的整数
      */  
     public static int getInt() {  
         int read;  
@@ -195,13 +196,13 @@ public class Main {
         }  
         return res;  
     }  
-  
-    /** 
-     * 判断字符是否空白 
+
+    /**
+     * 判断字符是否空白
      *  
-     * @param ch 
-     *            字符 
-     * @return 判断结果 
+     * @param ch
+     *            字符
+     * @return 判断结果
      */  
     public static boolean isBlank(char ch) {  
         if (ch == '\r' || ch == '\n' || ch == ' ') {  
@@ -209,13 +210,13 @@ public class Main {
         }  
         return false;  
     }  
-  
-    /** 
-     * 判断字符是不是数字 
+
+    /**
+     * 判断字符是不是数字
      *  
-     * @param ch 
-     *            字符 
-     * @return 判断结果 
+     * @param ch
+     *            字符
+     * @return 判断结果
      */  
     public static boolean isNumber(char ch) {  
         if (ch <= '9' && ch >= '0') {  
@@ -242,9 +243,9 @@ This problem was suggested by Aleksa Plavsic allllekssssa.
 
 Let z be the array of the depths of all leaves in the subtree of the vertex v. Let's sort z.
 
-Statement 1: it's profitable to lift the leaves in order of their appearing in z. 
+Statement 1: it's profitable to lift the leaves in order of their appearing in z.
 
-Statement 2: denote ax — the time of appearing the x-th leaf in the vertex v, let's consider the leaves $$$z_i$$$ and $$$z_{i+1}$$$ then  $$$a_{z_i+1} \geq  a_{z_i}+1$$$. 
+Statement 2: denote ax — the time of appearing the x-th leaf in the vertex v, let's consider the leaves $$$z_i$$$ and $$$z_{i+1}$$$ then  $$$a_{z_i+1} \geq  a_{z_i}+1$$$.
 
 Statement 3: $$$a_{z_i+1}=max(d_{z_i}+1,a_{z_i}+1)$$$, where $$$d_x$$$ is the depth of the x-th leaf in the subtree of the vertex v. The last statement gives us the solution for the problem: we should simply iterate over z from left to right and recalculate the array a by formula from the third statement. All statements can be easily proved and it's recommended to do by yourself to understand better the idea of the solution.
 
@@ -316,7 +317,7 @@ public int solve(){
 //                        return -1;
 //                }
 //            });
-    
+
 /*
 注释掉的代码在有些时候会出现
 java.lang.IllegalArgumentException: Comparison method violates its general contract!。可见16057179提交的错误提示

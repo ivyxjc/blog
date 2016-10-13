@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-06-09
 title: 在Centos 6中升级python
 category: 效率
 tags: [faq]

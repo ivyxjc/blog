@@ -1,10 +1,11 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-09-24
 title: ActionBarCompat
 category: Android
 tags: [android,android_UI]
 keywords:
-description:
+description: 如何添加菜单项, 以及如何在运行时更改菜单项.
 ---
 
 

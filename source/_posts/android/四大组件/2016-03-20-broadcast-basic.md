@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-20
 title: 广播机制初步
 category: Android
 tags: [android,android_broadcast]
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
 #### 效果
 
-![](assets/img/posts/broadcast_network_connectivity.gif)
+![](http://oezmbgg4j.bkt.clouddn.com/broadcast_network_connectivity.gif)
 
 
 ### 静态注册

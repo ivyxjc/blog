@@ -1,10 +1,11 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-10-10
 title: Linux 常用命令
 category: Linux
 tags: [linux]
 keywords:
-description:
+description: 介绍与解压, 文件操作, vim操作, 进程等相关的bash命令.
 ---
 
 ## 解压
@@ -18,14 +19,24 @@ unzip xxx.zip
 ### 解压tar.gz文件
 
 
-
-
 ## 文件相关操作
 
 ### 移动
 
 
 mv dir1 dir2
+
+## 进程相关
+
+### 如何查看正在运行的进程
+
+`ps -A`:显示所有的进程
+`ps -a`:显示终端中包括其它用户的所有进程
+`ps -x`:显示无控制终端的进程
+
+### 如何关闭正在运行的进程
+
+`kill -9 xxx`:xxx是进程的PID
 
 
 

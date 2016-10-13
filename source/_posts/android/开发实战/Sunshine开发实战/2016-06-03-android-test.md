@@ -1,10 +1,11 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-06-03
 title: Sunshine开发实战:测试
 category: Android
 tags: [android,android_test]
 keywords:
-description:
+description: Android开发中如何进行测试的简单例子.
 ---
 
 ## 简单的例子
@@ -38,4 +39,4 @@ public class TestPractice extends AndroidTestCase {
 }
 ```
 然后点击`run 'Tests in ...`即可.
-![](/assets/img/posts/android_test_run.png)
+![](http://oezmbgg4j.bkt.clouddn.com/android_test_run.png)

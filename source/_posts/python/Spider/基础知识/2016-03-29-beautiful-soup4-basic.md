@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-29
 title: BeautifulSoup4入门
 category: Python
 tags: [python,spider,bs4]
@@ -8,7 +9,7 @@ description:
 ---
 
 ## 对象的种类
-Beautiful Soup会将HTML文档抓换成一个树形结构，每个节点都是Python对象，所有对象可以分为4类：`Tag`,`NavigableString`,`BeautifulSoup`,`Comment`。
+BeautifulSoup会将HTML文档抓换成一个树形结构, 每个节点都是Python对象，所有对象可以分为4类：`Tag`,`NavigableString`,`BeautifulSoup`,`Comment`。
 
 
 ### Tag
@@ -26,7 +27,7 @@ print(tag)
 
 #### name
 
-每一个 Tag都有自己的name，可以通过`.name`。改变tag的name，将会影响通过当前BS对象生成的HTML文档
+每一个Tag都有自己的name，可以通过`.name`。改变tag的name，将会影响通过当前BS对象生成的HTML文档
 
 ```python3
 soup = BeautifulSoup('<b class="boldest">Extremely bold</b>',"html.parser")

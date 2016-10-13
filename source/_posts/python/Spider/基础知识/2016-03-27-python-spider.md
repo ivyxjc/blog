@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-27
 title: Python Spider入门
 category: Python
 tags: [python,spider,pythonspider]

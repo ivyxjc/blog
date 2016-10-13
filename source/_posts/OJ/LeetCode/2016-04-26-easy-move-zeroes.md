@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-04-26
 title: 283 将0移到数组末尾
 category: OJ
 tags: [array,twoPointer]

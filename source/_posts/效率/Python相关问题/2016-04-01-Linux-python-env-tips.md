@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-04-01
 title: 虚拟机环境搭建和相关问题解决
 category: 效率
 tags: [faq,python,spider,bs4]

@@ -1,10 +1,11 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-10-04
 title: matplot basic
 category: Python
 tags: [python,matplotlib]
 keywords:
-description:
+description: matplotlib是一个常见的绘图库. 本文介绍如何使用matplotlib 绘制2d散点图, 3d散点图.
 ---
 
 

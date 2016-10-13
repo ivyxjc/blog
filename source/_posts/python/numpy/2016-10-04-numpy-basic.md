@@ -1,10 +1,11 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-10-04
 title: numpy user guide
 category: Python
 tags: [python,numpy]
 keywords:
-description:
+description: numpy是常见的科学计算库. 本文介绍numpy库的一些常见操作,例如numpy.tile(A, reprs), numpy.sum(), axis,  dtye等相关知识.
 ---
 
 ## numpy.tile(A,reprs)

@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-04-26
 title: 数根
 category: OJ
 tags: [math]

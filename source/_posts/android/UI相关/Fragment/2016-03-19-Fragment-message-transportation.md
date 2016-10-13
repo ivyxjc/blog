@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-19
 title: Fragment和Activity通信
 category: Android
 tags: [android,android_UI,android_fragment]

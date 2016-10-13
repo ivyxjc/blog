@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-06-03
 title: Sunshine开发实战:架构(与官方原版有一些不同)
 category: Android
 tags: [android]

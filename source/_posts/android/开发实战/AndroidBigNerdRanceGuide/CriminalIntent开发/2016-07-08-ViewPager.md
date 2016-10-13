@@ -1,16 +1,17 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-07-08
 title: CriminalIntent程序中ViewPager相关内容
 category: Android
 tags: [android,android_view_pager]
 keywords:
-description:
+description: FragmenPagerAdapter和FragmenStatePagerAdapter这两者的区别主要在于卸载不再需要的fragment时采取的方法不同。
 ---
 
 
 ## FragmenPagerAdapter和FragmenStatePagerAdapter
 
-这两者的区别驻澳在与卸载不再需要的fragment时采取的方法不同。
+这两者的区别主要在于卸载不再需要的fragment时采取的方法不同。
 
 使用FragmentStatePagerAdapter会销毁掉不需要的fragment。事务提交后，可以将fragment从activity的FragmentManager中彻底移除。该类名中的`state`表明在销毁fragment时，它会将`onSaveInstanceState(Bundle)`方法中的Bundle信息保存下来。用户切换回来时，保存的实例可用于回复生成新的fragment。
 

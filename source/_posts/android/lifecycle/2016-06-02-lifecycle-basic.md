@@ -1,5 +1,5 @@
 ---
-layout: post
+date: 2016-06-02
 title: Activity的生命周期
 category: Android
 tags: [android,android_lifecycle]

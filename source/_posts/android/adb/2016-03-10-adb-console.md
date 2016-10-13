@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-10
 title: adb常用命令
 category: Android
 tags: [android,android_adb]
@@ -25,4 +26,3 @@ description:
 **adb pull /sdcard/test.mp4 E:/** :导出视频
 =======
 **adb screenrecord /sdcard/test.mp4**：录制手机实况视频到test.mp4，按**ctrl+c**结束，否则录制320s。
->>>>>>> 3bdb4f3c2c34055ca057762ee25dfbc7be628446

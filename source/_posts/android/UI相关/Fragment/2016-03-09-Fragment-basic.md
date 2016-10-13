@@ -1,5 +1,6 @@
 ---
-layout: post
+author: ivyxjc
+date: 2016-03-09
 title: Fragment初步
 category: Android
 tags: [android,android_fragment,android_UI]
@@ -8,7 +9,7 @@ description:
 ---
 
 ## Fragment概要
-![](/assets/img/posts/fragmentIntro.png)
+![](http://oezmbgg4j.bkt.clouddn.com/fragmentIntro.png)
 
 ## **onCreateView()**方法
 
@@ -146,7 +147,7 @@ case R.id.first:{
 
 ### 效果
 
-![](/assets/img/posts/fragment_basic_1.png)
+![](http://oezmbgg4j.bkt.clouddn.com/fragment_basic_1.png)
 
 
 ## 动态加载
