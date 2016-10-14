@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.ivyxjc.xyz/"/>
-  <updated>2016-10-14T00:56:30.245Z</updated>
+  <updated>2016-10-14T08:24:33.074Z</updated>
   <id>https://www.ivyxjc.xyz/</id>
   
   <author>
@@ -14,6 +14,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git相关命令及用法</title>
+    <link href="https://www.ivyxjc.xyz/2016/10/24/%E6%95%88%E7%8E%87/2016-10-14-git/"/>
+    <id>https://www.ivyxjc.xyz/2016/10/24/效率/2016-10-14-git/</id>
+    <published>2016-10-23T16:00:00.000Z</published>
+    <updated>2016-10-14T08:24:33.074Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="add-commit-push"><a href="#add-commit-push" class="headerlink" title="add commit push"></a>add commit push</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">add</span><span class="bash"> *</span></div><div class="line">git commit -m <span class="string">""</span></div><div class="line">git push -u origin branch</div></pre></td></tr></table></figure>
+<h2 id="添加子模块"><a href="#添加子模块" class="headerlink" title="添加子模块"></a>添加子模块</h2><p>子模块的操作必须非常小心, 因为</p>
+<h3 id="第一次添加子模块"><a href="#第一次添加子模块" class="headerlink" title="第一次添加子模块"></a>第一次添加子模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule add git://github.com/chneukirchen/rack.git rack</div></pre></td></tr></table></figure>
+<h3 id="更改子模块后提交对子模块的修改"><a href="#更改子模块后提交对子模块的修改" class="headerlink" title="更改子模块后提交对子模块的修改"></a>更改子模块后提交对子模块的修改</h3><p>进入子模块所在目录</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">add</span><span class="bash"> *</span></div><div class="line">git commit -m <span class="string">""</span></div><div class="line">git push</div></pre></td></tr></table></figure>
+<h3 id="主项目提交"><a href="#主项目提交" class="headerlink" title="主项目提交"></a>主项目提交</h3><p>我们可以直接像正常git文件一样的流程进行提交, 但是如果我们忘记提交子模块的变动, 而新的项目和子模块的变动又相关. 那么其他人从远程仓库中clone的文件可能并不能正确运行(缺少必要的子模块变动).</p>
+<p>所有推荐使用以下两种方法：</p>
+<ol>
+<li><code>git push --recurse-submodules=check</code>. 若有子模块的变动没有推送, 那么该<code>push</code>会失败.</li>
+<li><code>git push --recurse-submodules=on-demand</code>. 若有子模块的变动没有推送, 那么它会先推送子模块的变动, 然后再推送主项目.</li>
+</ol>
+<h3 id="子模块的更新"><a href="#子模块的更新" class="headerlink" title="子模块的更新"></a>子模块的更新</h3><p>其他人如果对子模块进行了修改, 在<code>git pull</code>之后, 再调用以下<code>git submodule update</code>更新子模块.</p>
+<p>调用<code>git submodule update</code>也更新子模块的相关内容, 但是会将子模块留在一个称作 <code>detached HEAD</code>的状态. 这意味着没有本地工作分支（例如 “master”）跟踪改动。 所以你做的任何改动都不会被跟踪。即使你使用了commit提交了一些变动, 在你下一次使用<code>git submodule update</code>时, 这些变动会全部丢失.</p>
+<p>所以需要进入每一个你希望对其进行修改的子模块,<code>git checkout branchName</code>检出一个分支. 从远程仓库中更新本地文件时, 使用<code>git submodule update --remote --merge</code>, 也可以使用<code>--rebase</code>.</p>
+<p>如果忘记了<code>--rebase</code>或者<code>--merge</code>, git会将子模块更新为远程仓库上的状态, 而且该项目将再一次进入 <code>detached HEAD</code> 的状态. 解决方法：</p>
+<ol>
+<li>检出包含之前本地更改的分支</li>
+<li>然后手动的merge或者rebase任何一个远程分支即可.</li>
+</ol>
+<p>即使没有提交子模块的更改也某有问题, 此时git只会抓取更改, 而不会覆盖本地内容.</p>
+<h3 id="克隆一个带子模块的项目"><a href="#克隆一个带子模块的项目" class="headerlink" title="克隆一个带子模块的项目"></a>克隆一个带子模块的项目</h3><p>克隆一个包含子模块的项目.<code>git clone</code>下来之后, 该子模块并不会被clone下来.需要调用以下两个命令：</p>
+<ol>
+<li><code>git submodule init</code>来下载本地所需的子模块配置文件文件</li>
+<li><code>git submodule update</code>来下载主项目中列出的合适的子模块提交</li>
+</ol>
+<p>也可以使用<code>git clone --recursivegit clone --recursive https://github.com/...</code>自动地初始化并更新仓库中的每一个子模块.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      本文主要如何使用git, 1). 最基础的add,commit, push 2). 如何在git文件中添加子模块
+    
+    </summary>
+    
+      <category term="效率" scheme="https://www.ivyxjc.xyz/categories/%E6%95%88%E7%8E%87/"/>
+    
+    
+      <category term="faq" scheme="https://www.ivyxjc.xyz/tags/faq/"/>
+    
+      <category term="git" scheme="https://www.ivyxjc.xyz/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux 常用命令</title>
@@ -27,9 +77,6 @@
 <h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><h3 id="如何查看正在运行的进程"><a href="#如何查看正在运行的进程" class="headerlink" title="如何查看正在运行的进程"></a>如何查看正在运行的进程</h3><p><code>ps -A</code>:显示所有的进程<br><code>ps -a</code>:显示终端中包括其它用户的所有进程<br><code>ps -x</code>:显示无控制终端的进程</p>
 <h3 id="如何关闭正在运行的进程"><a href="#如何关闭正在运行的进程" class="headerlink" title="如何关闭正在运行的进程"></a>如何关闭正在运行的进程</h3><p><code>kill -9 xxx</code>:xxx是进程的PID</p>
 <h2 id="vim相关操作"><a href="#vim相关操作" class="headerlink" title="vim相关操作"></a>vim相关操作</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>?pattern 光标下方查找<br>/pattern 光标上方查找</p>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/">https://www.ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -46,40 +93,11 @@
   </entry>
   
   <entry>
-    <title>matplot basic</title>
-    <link href="https://www.ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/"/>
-    <id>https://www.ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/</id>
-    <published>2016-10-03T16:00:00.000Z</published>
-    <updated>2016-10-14T00:56:30.406Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="2d散点图"><a href="#2d散点图" class="headerlink" title="2d散点图"></a>2d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#设置颜色</span></div><div class="line">colors = [<span class="string">'#0000FF'</span>,<span class="string">'#3CB371'</span>]</div><div class="line"><span class="comment">#各点大小的list</span></div><div class="line">sizeLab=np.add(sizeLab,<span class="number">20</span>)</div><div class="line"><span class="comment"># print(sizeLab)</span></div><div class="line"></div><div class="line"><span class="comment">#设置横轴上下限</span></div><div class="line">plt.xlim(<span class="number">0</span>,<span class="number">25</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置横轴标号</span></div><div class="line"><span class="comment"># plt.xticks(np.linspace(0,15,5,endpoint=True))</span></div><div class="line"></div><div class="line"><span class="comment">#设置记号的标签</span></div><div class="line">plt.xticks([<span class="number">2</span>*np.pi, <span class="number">4</span>*np.pi, <span class="number">0</span>, np.pi/<span class="number">2</span>, np.pi],</div><div class="line">       [<span class="string">r'$2\pi$'</span>, <span class="string">r'$4\pi$'</span>, <span class="string">r'$0$'</span>, <span class="string">r'$\pi/2$'</span>, <span class="string">r'$\pi$'</span>])</div><div class="line"></div><div class="line"><span class="comment">#设置横纵坐标label</span></div><div class="line">plt.xlabel(<span class="string">"x 轴label"</span>)</div><div class="line">plt.ylabel(<span class="string">"y 轴label"</span>)</div><div class="line"></div><div class="line"></div><div class="line">plt.scatter(datingDataMat[:,<span class="number">1</span>],datingDataMat[:,<span class="number">2</span>],s=sizeLab, c=colors)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-<h2 id="3d散点图"><a href="#3d散点图" class="headerlink" title="3d散点图"></a>3d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">fig=plt.figure()</div><div class="line">ax=fig.add_subplot(<span class="number">111</span>,projection=<span class="string">'3d'</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置坐标</span></div><div class="line">ax.set_xlabel(<span class="string">"飞行里程数"</span>)</div><div class="line">ax.set_ylabel(<span class="string">"游戏时间百分比"</span>)</div><div class="line">ax.set_zlabel(<span class="string">"冰激凌消耗量"</span>)</div><div class="line"></div><div class="line">type1=ax.scatter(dataDidnlike[:,<span class="number">0</span>], dataDidnlike[:,<span class="number">1</span>], dataDidnlike[:,<span class="number">2</span>], c=<span class="string">'#3c345b'</span>)</div><div class="line">type2=ax.scatter(dataSmallDoses[:,<span class="number">0</span>], dataSmallDoses[:,<span class="number">1</span>],dataSmallDoses[:,<span class="number">2</span>],c=<span class="string">"#4576f7"</span>)</div><div class="line">type3=ax.scatter(dataLargeDoses[:,<span class="number">0</span>], dataLargeDoses[:,<span class="number">1</span>], dataLargeDoses[:,<span class="number">2</span>],c=<span class="string">"#43ff1a"</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置图例</span></div><div class="line">ax.legend((type1, type2, type3), (<span class="string">u'不喜欢'</span>, <span class="string">u'魅力一般'</span>, <span class="string">u'极具魅力'</span>), loc=<span class="number">2</span>)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/">https://www.ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      matplotlib是一个常见的绘图库. 本文介绍如何使用matplotlib 绘制2d散点图, 3d散点图.
-    
-    </summary>
-    
-      <category term="Python" scheme="https://www.ivyxjc.xyz/categories/Python/"/>
-    
-    
-      <category term="python" scheme="https://www.ivyxjc.xyz/tags/python/"/>
-    
-      <category term="matplotlib" scheme="https://www.ivyxjc.xyz/tags/matplotlib/"/>
-    
-  </entry>
-  
-  <entry>
     <title>numpy user guide</title>
     <link href="https://www.ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/"/>
     <id>https://www.ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/</id>
     <published>2016-10-03T16:00:00.000Z</published>
-    <updated>2016-10-14T00:56:30.409Z</updated>
+    <updated>2016-10-14T06:44:46.117Z</updated>
     
     <content type="html"><![CDATA[<h2 id="numpy-tile-A-reprs"><a href="#numpy-tile-A-reprs" class="headerlink" title="numpy.tile(A,reprs)"></a>numpy.tile(A,reprs)</h2><p><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.tile.html" target="_blank" rel="external">numpy.tile</a></p>
 <p><code>numpy.tile(A, reps)</code></p>
@@ -91,13 +109,10 @@
 <h2 id="numpy-sum"><a href="#numpy-sum" class="headerlink" title="numpy.sum()"></a>numpy.sum()</h2><p><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html" target="_blank" rel="external">numpy.sum()</a></p>
 <p><code>numpy.sum(a, axis=None, dtype=None, out=None, keepdims=False)</code></p>
 <h2 id="axis"><a href="#axis" class="headerlink" title="axis"></a>axis</h2><p>This is a litte complex. <code>abs(axis)</code> must be less than <code>a.ndim</code>.</p>
-<p><img src="/assets/img/posts/numpy_sum_1.jpg" alt=""><br><img src="/assets/img/posts/numpy_sum_2,jpg" alt=""></p>
+<p><img src="http://oezmbgg4j.bkt.clouddn.com/numpy_sum_1.jpg" alt=""><br><img src="http://oezmbgg4j.bkt.clouddn.com/numpy_sum_2.jpg" alt=""></p>
 <h3 id="dtype"><a href="#dtype" class="headerlink" title="dtype"></a>dtype</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;b=np.array([<span class="number">0.3</span>,<span class="number">0.4</span>,<span class="number">0.9</span>,<span class="number">1.5</span>,<span class="number">1.9</span>])</div><div class="line">&gt;&gt;&gt;print(b.sum(dtype=np.int32))</div><div class="line"></div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
 <h3 id="keepdims"><a href="#keepdims" class="headerlink" title="keepdims"></a>keepdims</h3><p>If this parameter is assigned to True, the it will return an array as dimension with the size that input array is</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;b=np.array([[[<span class="number">0.3</span>,<span class="number">0.4</span>,<span class="number">0.9</span>,<span class="number">1.5</span>,<span class="number">1.9</span>]]])</div><div class="line">&gt;&gt;&gt;print(b.sum())</div><div class="line"></div><div class="line"><span class="number">5.0</span></div><div class="line"></div><div class="line"></div><div class="line">&gt;&gt;&gt;b=np.array([[[<span class="number">0.3</span>,<span class="number">0.4</span>,<span class="number">0.9</span>,<span class="number">1.5</span>,<span class="number">1.9</span>]]])</div><div class="line">&gt;&gt;&gt;print(b.sum(keepdims=<span class="keyword">True</span>))</div><div class="line"></div><div class="line">[[[ <span class="number">5.</span>]]]</div></pre></td></tr></table></figure>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/">https://www.ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -116,6 +131,32 @@
   </entry>
   
   <entry>
+    <title>matplotlib绘制2D，3D散点图</title>
+    <link href="https://www.ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/"/>
+    <id>https://www.ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/</id>
+    <published>2016-10-03T16:00:00.000Z</published>
+    <updated>2016-10-14T06:45:46.394Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="2d散点图"><a href="#2d散点图" class="headerlink" title="2d散点图"></a>2d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#设置颜色</span></div><div class="line">colors = [<span class="string">'#0000FF'</span>,<span class="string">'#3CB371'</span>]</div><div class="line"><span class="comment">#各点大小的list</span></div><div class="line">sizeLab=np.add(sizeLab,<span class="number">20</span>)</div><div class="line"><span class="comment"># print(sizeLab)</span></div><div class="line"></div><div class="line"><span class="comment">#设置横轴上下限</span></div><div class="line">plt.xlim(<span class="number">0</span>,<span class="number">25</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置横轴标号</span></div><div class="line"><span class="comment"># plt.xticks(np.linspace(0,15,5,endpoint=True))</span></div><div class="line"></div><div class="line"><span class="comment">#设置记号的标签</span></div><div class="line">plt.xticks([<span class="number">2</span>*np.pi, <span class="number">4</span>*np.pi, <span class="number">0</span>, np.pi/<span class="number">2</span>, np.pi],</div><div class="line">       [<span class="string">r'$2\pi$'</span>, <span class="string">r'$4\pi$'</span>, <span class="string">r'$0$'</span>, <span class="string">r'$\pi/2$'</span>, <span class="string">r'$\pi$'</span>])</div><div class="line"></div><div class="line"><span class="comment">#设置横纵坐标label</span></div><div class="line">plt.xlabel(<span class="string">"x 轴label"</span>)</div><div class="line">plt.ylabel(<span class="string">"y 轴label"</span>)</div><div class="line"></div><div class="line"></div><div class="line">plt.scatter(datingDataMat[:,<span class="number">1</span>],datingDataMat[:,<span class="number">2</span>],s=sizeLab, c=colors)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<h2 id="3d散点图"><a href="#3d散点图" class="headerlink" title="3d散点图"></a>3d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">fig=plt.figure()</div><div class="line">ax=fig.add_subplot(<span class="number">111</span>,projection=<span class="string">'3d'</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置坐标</span></div><div class="line">ax.set_xlabel(<span class="string">"飞行里程数"</span>)</div><div class="line">ax.set_ylabel(<span class="string">"游戏时间百分比"</span>)</div><div class="line">ax.set_zlabel(<span class="string">"冰激凌消耗量"</span>)</div><div class="line"></div><div class="line">type1=ax.scatter(dataDidnlike[:,<span class="number">0</span>], dataDidnlike[:,<span class="number">1</span>], dataDidnlike[:,<span class="number">2</span>], c=<span class="string">'#3c345b'</span>)</div><div class="line">type2=ax.scatter(dataSmallDoses[:,<span class="number">0</span>], dataSmallDoses[:,<span class="number">1</span>],dataSmallDoses[:,<span class="number">2</span>],c=<span class="string">"#4576f7"</span>)</div><div class="line">type3=ax.scatter(dataLargeDoses[:,<span class="number">0</span>], dataLargeDoses[:,<span class="number">1</span>], dataLargeDoses[:,<span class="number">2</span>],c=<span class="string">"#43ff1a"</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置图例</span></div><div class="line">ax.legend((type1, type2, type3), (<span class="string">u'不喜欢'</span>, <span class="string">u'魅力一般'</span>, <span class="string">u'极具魅力'</span>), loc=<span class="number">2</span>)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      matplotlib是一个常见的绘图库. 本文介绍如何使用matplotlib 绘制2d散点图, 3d散点图.
+    
+    </summary>
+    
+      <category term="Python" scheme="https://www.ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://www.ivyxjc.xyz/tags/python/"/>
+    
+      <category term="matplotlib" scheme="https://www.ivyxjc.xyz/tags/matplotlib/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ActionBarCompat</title>
     <link href="https://www.ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/"/>
     <id>https://www.ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/</id>
@@ -129,9 +170,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onPrepareOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">        menu.clear();</div><div class="line">        getMenuInflater().inflate(R.menu.menu_main, menu);</div><div class="line">        MenuItem item=menu.findItem(R.id.menu_refresh);</div><div class="line">        <span class="keyword">if</span>(mButtonForbidRefresh.isActivated())&#123;</div><div class="line">           item.setEnabled(<span class="keyword">false</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        MenuItem location = menu.add(<span class="number">0</span>, R.id.menu_location, Menu.CATEGORY_SECONDARY, <span class="string">"Location"</span>);</div><div class="line">        location.setIcon(R.mipmap.ic_action_location);</div><div class="line">        MenuItemCompat.setShowAsAction(location, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onPrepareOptionsMenu(menu);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <h3 id="onPrepareOptionsMenu-Menu-menu-和onCreateOptionsMenu-Menu-menu-区别"><a href="#onPrepareOptionsMenu-Menu-menu-和onCreateOptionsMenu-Menu-menu-区别" class="headerlink" title="onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别"></a>onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别</h3><p><code>onCreateOptionsMenu(Menu menu)</code>只在最初的时候会调用每次点击menu都会<br>调用一次<code>onPrepareOptionsMenu(Menu menu)</code>.使用<code>invalidateOptionsMenu()</code><br>会直接调用onPrepareOptionsMenu(Menu menu);</p>
 <h3 id="多个Activity共用相同ActionBar"><a href="#多个Activity共用相同ActionBar" class="headerlink" title="多个Activity共用相同ActionBar"></a>多个Activity共用相同ActionBar</h3><p>如果应用包含多个 Activity，且其中某些 Activity 提供相同的选项菜单，则可考虑创建一个仅<br>实现<code>onCreateOptionsMenu()</code> 和 <code>onOptionsItemSelected()</code>方法的 Activity。然后，<br>为每个应共享相同选项菜单的 Activity 扩展此类。 通过这种方式，您可以管理一个用于<br>处理菜单操作的代码集，且每个子级类均会继承菜单行为。若要将菜单项添加到一个<br>子级 Activity，请重写该 Activity 中的 <code>onCreateOptionsMenu()</code>。<br>调用 <code>super.onCreateOptionsMenu(menu)</code>，以便创建原始菜单项，<br>然后使用 <code>menu.add()</code> 添加新菜单项。此外，您还可以替代各个菜单项的超类行为。</p>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/">https://www.ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -167,9 +205,6 @@
 <p>更改为</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">onCreate(...)&#123;</div><div class="line">mRequestManager=Glide.with(getActivity());</div><div class="line">&#125;</div><div class="line"></div><div class="line">...</div><div class="line">mRequestManager</div><div class="line">           .load(url)</div><div class="line">           .diskCacheStrategy(DiskCacheStrategy.ALL)</div><div class="line">           .centerCrop()</div><div class="line">           .into(imageMovie);</div></pre></td></tr></table></figure>
 <p>这样就不会出问题.</p>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/09/18/android/UI相关/2016-09-18-RecyclerView/">https://www.ivyxjc.xyz/2016/09/18/android/UI相关/2016-09-18-RecyclerView/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -204,9 +239,6 @@
 <li>FragmentStatePagerAdapter更省内存，所以当有大量的fragment时，推荐使用FragmentStatePagerAdapter.</li>
 <li>但是当用户界面只有少量fragment时，推荐FragmentPagerAdapter。</li>
 </ol>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/08/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-08-ViewPager/">https://www.ivyxjc.xyz/2016/07/08/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-08-ViewPager/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -238,9 +270,6 @@
 <h2 id="listfragment自己编写listadapter中button监听问题"><a href="#listfragment自己编写listadapter中button监听问题" class="headerlink" title="listfragment自己编写listadapter中button监听问题"></a>listfragment自己编写listadapter中button监听问题</h2><p>listfragment自己编写listadapter中button总是监听最后一个item中的数据。</p>
 <p><img src="http://oezmbgg4j.bkt.clouddn.com/listview_button_click.gif" alt=""></p>
 <p>无论点击哪一个button都是计算最后一行。</p>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/07/android/开发实战/个人开发/2016-07-07-calculator/">https://www.ivyxjc.xyz/2016/07/07/android/开发实战/个人开发/2016-07-07-calculator/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -267,9 +296,6 @@
     
     <content type="html"><![CDATA[<h2 id="github使用代理"><a href="#github使用代理" class="headerlink" title="github使用代理"></a>github使用代理</h2><p>git添加代理：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy &apos;http://127.0.0.1:1080&apos;</div><div class="line">git config --global https.proxy &apos;http://127.0.0.1:1080&apos;</div></pre></td></tr></table></figure>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/06/效率/2016-07-06-proxy/">https://www.ivyxjc.xyz/2016/07/06/效率/2016-07-06-proxy/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -283,39 +309,6 @@
     
     
       <category term="faq" scheme="https://www.ivyxjc.xyz/tags/faq/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CriminalIntent程序中Fragment，Activity通信</title>
-    <link href="https://www.ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-Intent/"/>
-    <id>https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-Intent/</id>
-    <published>2016-07-05T16:00:00.000Z</published>
-    <updated>2016-10-14T00:56:30.332Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="最简单的应用"><a href="#最简单的应用" class="headerlink" title="最简单的应用"></a>最简单的应用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent=<span class="keyword">new</span> Intent(getActivity(), ActivityCrimeBase.class);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
-<h2 id="使用extra添加信息"><a href="#使用extra添加信息" class="headerlink" title="使用extra添加信息"></a>使用extra添加信息</h2><h3 id="附加extra信息"><a href="#附加extra信息" class="headerlink" title="附加extra信息"></a>附加extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">intent.putExtra(FragmentCrime.EXTRA_CRIME_ID,c.getId());</div></pre></td></tr></table></figure>
-<h3 id="获取extra信息"><a href="#获取extra信息" class="headerlink" title="获取extra信息"></a>获取extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">FragmentCrime.java</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXTRA_CRIME_ID=<span class="string">"com.jc.criminalIntent2.crime_id"</span>;</div><div class="line">....</div><div class="line">....</div><div class="line">UUID crimeId=(UUID)getActivity()</div><div class="line">                .getIntent()</div><div class="line">                .getSerializableExtra(EXTRA_CRIME_ID);</div></pre></td></tr></table></figure>
-<p>此方法会破坏fragment的封装性，因为这时fragment总是需要由某个具体的activity托管。</p>
-<p>为了解决这一问题，可以就爱你个<code>mCrimeId</code>存放在fragment的arguments bundle中。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ActivityCrime.java</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCrime</span> <span class="keyword">extends</span> <span class="title">ActivitySetFragmentBase</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Fragment <span class="title">createFragment</span><span class="params">()</span> </span>&#123;</div><div class="line">        UUID crimeId=(UUID)getIntent()</div><div class="line">                .getSerializableExtra(FragmentCrime.EXTRA_CRIME_ID);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> FragmentCrime.newInstance(crimeId);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">FragmentCrime.<span class="function">java</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> &#123;</div><div class="line">     <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">     UUID crimeId=(UUID)getArguments()</div><div class="line">             .getSerializable(EXTRA_CRIME_ID);</div><div class="line">     mCrime=CrimeLab.get(getActivity()).getCrime(crimeId);</div><div class="line"> &#125;</div><div class="line"></div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FragmentCrime <span class="title">newInstance</span><span class="params">(UUID crimeId)</span></span>&#123;</div><div class="line"></div><div class="line">     Bundle args=<span class="keyword">new</span> Bundle();</div><div class="line">     args.putSerializable(EXTRA_CRIME_ID,crimeId);</div><div class="line">     FragmentCrime fragment=<span class="keyword">new</span> FragmentCrime();</div><div class="line">     fragment.setArguments(args);</div><div class="line">     <span class="keyword">return</span> fragment;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-Intent/">https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-Intent/</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      使用Intent在Fragment, Activity中进行通信.
-    
-    </summary>
-    
-      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
-    
-    
-      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
-    
-      <category term="android_adapter" scheme="https://www.ivyxjc.xyz/tags/android-adapter/"/>
     
   </entry>
   
@@ -335,9 +328,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">内部类</div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">CrimeAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">Crime</span>&gt;</span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">CrimeAdapter</span><span class="params">(ArrayList&lt;Crime&gt; crimes)</span></span>&#123;</div><div class="line">            <span class="keyword">super</span>(getActivity(),<span class="number">0</span>,crimes);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span>(convertView==<span class="keyword">null</span>)&#123;</div><div class="line">                convertView=getActivity()</div><div class="line">                        .getLayoutInflater()</div><div class="line">                        .inflate(R.layout.list_item_crime,<span class="keyword">null</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            Crime c=(Crime)(getListAdapter()).getItem(position);</div><div class="line"></div><div class="line">            TextView titleTextView=(TextView)convertView.findViewById(R.id.list_item_crime_title_TextView);</div><div class="line">            TextView dateTextView=(TextView)convertView.findViewById(R.id.list_item_crime_date_TextView);</div><div class="line">            CheckBox solvedCheckBox=(CheckBox)convertView.findViewById(R.id.list_item_crime_isSolved_CheckBox);</div><div class="line"></div><div class="line">            solvedCheckBox.setChecked(c.isSolved());</div><div class="line">            <span class="keyword">return</span> convertView;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure>
 <p>注： 由于CheckBox默认是可聚焦的，也就是点击列表向会被解读为切换CheckBox的状态，因而无法触发<code>onListItemClick()</code>方法。解决方法：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">CheckBox</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/list_item_crime_isSolved_CheckBox"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></div><div class="line">    <span class="attr">android:focusable</span>=<span class="string">"false"</span>/&gt;</div></pre></td></tr></table></figure>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-ListFragment/">https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-ListFragment/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -346,6 +336,36 @@
 &lt;ol&gt;
 &lt;li&gt;创建必要的视图对象&lt;/li&gt;
 &lt;li
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_adapter" scheme="https://www.ivyxjc.xyz/tags/android-adapter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CriminalIntent程序中Fragment，Activity通信</title>
+    <link href="https://www.ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-Intent/"/>
+    <id>https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-Intent/</id>
+    <published>2016-07-05T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.332Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="最简单的应用"><a href="#最简单的应用" class="headerlink" title="最简单的应用"></a>最简单的应用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent=<span class="keyword">new</span> Intent(getActivity(), ActivityCrimeBase.class);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<h2 id="使用extra添加信息"><a href="#使用extra添加信息" class="headerlink" title="使用extra添加信息"></a>使用extra添加信息</h2><h3 id="附加extra信息"><a href="#附加extra信息" class="headerlink" title="附加extra信息"></a>附加extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">intent.putExtra(FragmentCrime.EXTRA_CRIME_ID,c.getId());</div></pre></td></tr></table></figure>
+<h3 id="获取extra信息"><a href="#获取extra信息" class="headerlink" title="获取extra信息"></a>获取extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">FragmentCrime.java</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXTRA_CRIME_ID=<span class="string">"com.jc.criminalIntent2.crime_id"</span>;</div><div class="line">....</div><div class="line">....</div><div class="line">UUID crimeId=(UUID)getActivity()</div><div class="line">                .getIntent()</div><div class="line">                .getSerializableExtra(EXTRA_CRIME_ID);</div></pre></td></tr></table></figure>
+<p>此方法会破坏fragment的封装性，因为这时fragment总是需要由某个具体的activity托管。</p>
+<p>为了解决这一问题，可以就爱你个<code>mCrimeId</code>存放在fragment的arguments bundle中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ActivityCrime.java</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCrime</span> <span class="keyword">extends</span> <span class="title">ActivitySetFragmentBase</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Fragment <span class="title">createFragment</span><span class="params">()</span> </span>&#123;</div><div class="line">        UUID crimeId=(UUID)getIntent()</div><div class="line">                .getSerializableExtra(FragmentCrime.EXTRA_CRIME_ID);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> FragmentCrime.newInstance(crimeId);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">FragmentCrime.<span class="function">java</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> &#123;</div><div class="line">     <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">     UUID crimeId=(UUID)getArguments()</div><div class="line">             .getSerializable(EXTRA_CRIME_ID);</div><div class="line">     mCrime=CrimeLab.get(getActivity()).getCrime(crimeId);</div><div class="line"> &#125;</div><div class="line"></div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FragmentCrime <span class="title">newInstance</span><span class="params">(UUID crimeId)</span></span>&#123;</div><div class="line"></div><div class="line">     Bundle args=<span class="keyword">new</span> Bundle();</div><div class="line">     args.putSerializable(EXTRA_CRIME_ID,crimeId);</div><div class="line">     FragmentCrime fragment=<span class="keyword">new</span> FragmentCrime();</div><div class="line">     fragment.setArguments(args);</div><div class="line">     <span class="keyword">return</span> fragment;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      使用Intent在Fragment, Activity中进行通信.
     
     </summary>
     
@@ -371,9 +391,6 @@
 <p><code>Path</code>中添加<code>$JAVA_HOME$\jre\bin</code>和<code>$JAVA_HOME$\bin</code></p>
 <h2 id="python环境变量设置"><a href="#python环境变量设置" class="headerlink" title="python环境变量设置"></a>python环境变量设置</h2><p><code>path</code>中添加<code>c:\python35</code></p>
 <h2 id="jetbrains系列idea设置"><a href="#jetbrains系列idea设置" class="headerlink" title="jetbrains系列idea设置"></a>jetbrains系列idea设置</h2><p>更改程序主目录下<code>bin/idea.properties</code>中的内容</p>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/03/效率/2016-07-03-Reset-PC/">https://www.ivyxjc.xyz/2016/07/03/效率/2016-07-03-Reset-PC/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -391,8 +408,8 @@
   
   <entry>
     <title>在Centos 6中升级python</title>
-    <link href="https://www.ivyxjc.xyz/2016/06/09/%E6%95%88%E7%8E%87/Python%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/2016-06-09-update-python/"/>
-    <id>https://www.ivyxjc.xyz/2016/06/09/效率/Python相关问题/2016-06-09-update-python/</id>
+    <link href="https://www.ivyxjc.xyz/2016/06/09/%E6%95%88%E7%8E%87/2016-06-09-update-python/"/>
+    <id>https://www.ivyxjc.xyz/2016/06/09/效率/2016-06-09-update-python/</id>
     <published>2016-06-08T16:00:00.000Z</published>
     <updated>2016-10-14T00:56:30.428Z</updated>
     
@@ -418,9 +435,6 @@
 <li><p>pip无法使用,出现<code>versionconflic</code>的问题,好像是因为pip版本的问题.进入pip的目录,删除pip.再直接下载上述错误信息中显示的<code>requirement.parse()</code>中的pip版本,解压缩,安装即可.</p>
 </li>
 </ol>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/09/效率/Python相关问题/2016-06-09-update-python/">https://www.ivyxjc.xyz/2016/06/09/效率/Python相关问题/2016-06-09-update-python/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -446,14 +460,7 @@
     <published>2016-06-07T16:00:00.000Z</published>
     <updated>2016-10-14T00:56:30.402Z</updated>
     
-    <content type="html"><![CDATA[<hr>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/08/python/Spider/票房爬虫/2016-06-08-maoyan/">https://www.ivyxjc.xyz/2016/06/08/python/Spider/票房爬虫/2016-06-08-maoyan/</a></p>
-]]></content>
-    
     <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;本文链接：&lt;a href=&quot;https://www.ivyxjc.xyz/2016/06/08/python/Spider/票房爬虫/2016-06-08-maoyan/&quot;&gt;https://www.ivyxjc.xyz/2016/06/08/python/Spid
     
     </summary>
     
@@ -469,34 +476,6 @@
   </entry>
   
   <entry>
-    <title>Sunshine开发实战:架构(与官方原版有一些不同)</title>
-    <link href="https://www.ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-sunshine-build-custom/"/>
-    <id>https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-sunshine-build-custom/</id>
-    <published>2016-06-02T16:00:00.000Z</published>
-    <updated>2016-10-14T00:56:30.349Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.</p>
-<h2 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h2><p>点击刷新按钮,联网获取数据,处理数据,若数据非null,存入数据库,从数据库中读取数据,刷新UI.</p>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-sunshine-build-custom/">https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-sunshine-build-custom/</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;搜索&quot;&gt;&lt;a href=&quot;#搜索&quot; class=&quot;headerlink&quot; title=&quot;搜索&quot;&gt;&lt;/a&gt;搜索&lt;/h2&gt;&lt;p&gt;通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.&lt;/p&gt;
-&lt;h2 id=&quot;刷新&quot;&gt;&lt;a href=&quot;#刷新&quot; 
-    
-    </summary>
-    
-      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
-    
-    
-      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Sunshine开发实战:测试</title>
     <link href="https://www.ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-android-test/"/>
     <id>https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-android-test/</id>
@@ -505,9 +484,6 @@
     
     <content type="html"><![CDATA[<h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestPractice</span> <span class="keyword">extends</span> <span class="title">AndroidTestCase</span> </span>&#123;</div><div class="line">    <span class="comment">//测试前进行的工作</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">super</span>.setUp();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//所有测试的类必须以test开头</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testThatDemonstratesAssertations</span><span class="params">()</span> <span class="keyword">throws</span> Throwable</span>&#123;</div><div class="line">        <span class="keyword">int</span> a=<span class="number">5</span>;</div><div class="line">        <span class="keyword">int</span> b=<span class="number">3</span>;</div><div class="line">        <span class="keyword">int</span> c=<span class="number">5</span>;</div><div class="line">        <span class="keyword">int</span> d=<span class="number">10</span>;</div><div class="line"></div><div class="line">        assertEquals(<span class="string">"X should be equal"</span>,a,c);</div><div class="line">        assertTrue(<span class="string">"Y should be true"</span>,d&gt;a);</div><div class="line">        assertFalse(<span class="string">"Z should be false"</span>,a==b);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//测试之后进行的工作</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">super</span>.tearDown();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>然后点击<code>run &#39;Tests in ...</code>即可.<br><img src="http://oezmbgg4j.bkt.clouddn.com/android_test_run.png" alt=""></p>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-android-test/">https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-android-test/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -522,6 +498,31 @@
       <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
     
       <category term="android_test" scheme="https://www.ivyxjc.xyz/tags/android-test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sunshine开发实战:架构(与官方原版有一些不同)</title>
+    <link href="https://www.ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-sunshine-build-custom/"/>
+    <id>https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-sunshine-build-custom/</id>
+    <published>2016-06-02T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.349Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.</p>
+<h2 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h2><p>点击刷新按钮,联网获取数据,处理数据,若数据非null,存入数据库,从数据库中读取数据,刷新UI.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;搜索&quot;&gt;&lt;a href=&quot;#搜索&quot; class=&quot;headerlink&quot; title=&quot;搜索&quot;&gt;&lt;/a&gt;搜索&lt;/h2&gt;&lt;p&gt;通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.&lt;/p&gt;
+&lt;h2 id=&quot;刷新&quot;&gt;&lt;a href=&quot;#刷新&quot; 
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
     
   </entry>
   
@@ -547,9 +548,6 @@
 <li>访问外部模型数据</li>
 </ol>
 <h2 id="翻转屏幕对生命周期的影响"><a href="#翻转屏幕对生命周期的影响" class="headerlink" title="翻转屏幕对生命周期的影响"></a>翻转屏幕对生命周期的影响</h2><p>翻转屏幕会导致<code>Activity</code>先会被销毁再重新创建，若不加以处理会导致很多意外的问题。顺序为<code>onPause()</code>,<code>onStop()</code>,<code>onDestory()</code>,<code>onCreate()</code>,<code>onStart()</code>,<code>onResume()</code></p>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/02/android/lifecycle/2016-06-02-lifecycle-basic/">https://www.ivyxjc.xyz/2016/06/02/android/lifecycle/2016-06-02-lifecycle-basic/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -580,9 +578,6 @@
     <content type="html"><![CDATA[<p>##　Sunshine应用数据存储总体框架<br><img src="http://oezmbgg4j.bkt.clouddn.com/sunshine_data_persistence.png" alt=""></p>
 <h2 id="WeatherContract"><a href="#WeatherContract" class="headerlink" title="WeatherContract"></a>WeatherContract</h2><p>A contract is an agreement between the data model, storeage, and views, presentation, describing how information is accessed.<br>事实上就是在一个类中规定好所有相关的数据表中相应的表名,列名等等.</p>
 <h2 id="WeatherDBHelper"><a href="#WeatherDBHelper" class="headerlink" title="WeatherDBHelper"></a>WeatherDBHelper</h2><p>创建数据库并进行初始化</p>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/02/android/开发实战/Sunshine开发实战/2016-06-02-data-persistence/">https://www.ivyxjc.xyz/2016/06/02/android/开发实战/Sunshine开发实战/2016-06-02-data-persistence/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -610,9 +605,6 @@
     
     <content type="html"><![CDATA[<p>使用<code>AsyncTask</code>虽然可以非常简单将耗时操作与<code>UI线程</code>分开, 但是仍是耗时操作和<code>Activity</code>的生命周期绑定在了一起, 那么可能翻转屏幕就会使得该操作中断. 所以使用<code>Service</code>是更好的方法, <code>google</code>也给出了专用的解决方案, 使用<code>AsyncAdapter</code>.</p>
 <p><img src="http://oezmbgg4j.bkt.clouddn.com/async_1.png" alt=""></p>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/05/15/android/并发编程/2016-05-15-async/">https://www.ivyxjc.xyz/2016/05/15/android/并发编程/2016-05-15-async/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -643,9 +635,6 @@
 <p>所以常在<code>onStop()</code>方法中调用<code>cancel</code>相关方法.</p>
 <figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ublic <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> TAG = <span class="string">"MyTag"</span>;</div><div class="line">StringRequest stringRequest; <span class="comment">// Assume this exists.</span></div><div class="line">RequestQueue mRequestQueue;  <span class="comment">// Assume this exists.</span></div><div class="line"></div><div class="line"><span class="comment">// Set the tag on the request.</span></div><div class="line">stringRequest.setTag(TAG);</div><div class="line"></div><div class="line"><span class="comment">// Add the request to the RequestQueue.</span></div><div class="line">mRequestQueue.<span class="built_in">add</span>(stringRequest);</div></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span> <span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onStop();</div><div class="line">    <span class="keyword">if</span> (mRequestQueue != <span class="keyword">null</span>) &#123;</div><div class="line">        mRequestQueue.cancelAll(TAG);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/05/13/android/第三方库/2016-05-13-volley/">https://www.ivyxjc.xyz/2016/05/13/android/第三方库/2016-05-13-volley/</a></p>
 ]]></content>
     
     <summary type="html">
@@ -660,35 +649,6 @@
       <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
     
       <category term="volley" scheme="https://www.ivyxjc.xyz/tags/volley/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android编程中的一些常见问题和解决办法</title>
-    <link href="https://www.ivyxjc.xyz/2016/05/11/android/2016-05-11-android-qa/"/>
-    <id>https://www.ivyxjc.xyz/2016/05/11/android/2016-05-11-android-qa/</id>
-    <published>2016-05-10T16:00:00.000Z</published>
-    <updated>2016-10-14T00:56:30.280Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1-如何解决有些函数只能接受String而无法接受Int"><a href="#1-如何解决有些函数只能接受String而无法接受Int" class="headerlink" title="1.如何解决有些函数只能接受String而无法接受Int"></a>1.如何解决有些函数只能接受<code>String</code>而无法接受<code>Int</code></h3><p>这样就无法使用<code>R.string...</code>.</p>
-<p>解决方法:<br><br><code>getResources().getString(R.string.aaa))</code></p>
-<hr>
-<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
-<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/05/11/android/2016-05-11-android-qa/">https://www.ivyxjc.xyz/2016/05/11/android/2016-05-11-android-qa/</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      Android开发中常见的一些细节问题.
-    
-    </summary>
-    
-      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
-    
-    
-      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
-    
-      <category term="java" scheme="https://www.ivyxjc.xyz/tags/java/"/>
     
   </entry>
   
