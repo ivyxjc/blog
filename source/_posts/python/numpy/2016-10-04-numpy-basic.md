@@ -67,8 +67,8 @@ For example, for an shape of(1,2,2,3), a reps of (2,3) will be treated as (1,1,2
 ## axis
 This is a litte complex. `abs(axis)` must be less than `a.ndim`.
 
-![](/assets/img/posts/numpy_sum_1.jpg)
-![](/assets/img/posts/numpy_sum_2,jpg)
+![](http://oezmbgg4j.bkt.clouddn.com/numpy_sum_1.jpg)
+![](http://oezmbgg4j.bkt.clouddn.com/numpy_sum_2.jpg)
 
 ### dtype
 

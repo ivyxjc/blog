@@ -1,7 +1,7 @@
 ---
 author: ivyxjc
 date: 2016-10-04
-title: matplot basic
+title: matplotlib绘制2D，3D散点图
 category: Python
 tags: [python,matplotlib]
 keywords:
