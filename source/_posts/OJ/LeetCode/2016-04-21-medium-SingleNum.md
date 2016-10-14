@@ -5,7 +5,7 @@ title: LeetCode SingleNum 136,127,260
 category: OJ
 tags: [quicksort,sort,bit manipulation]
 keywords:
-description:
+description: 在一个int数组中, 找到出现次数与其它数并不一致的数. 1). 若每个数字都出现2次, 一个数字出现的次数为1次, 对所有数字取异或. 2).若每个数字都出现3次, 一个数字num出现1次. 对int32中的每一位出现1的次数进行统计, 如果该位上出现1的次数不是3的倍数,则说明num在该位上为1. 3).每个数字出现两遍, 两个数字a,b例外. 对所有数求异或. 取结果二进制最右边为1的位置(`diff ^=-diff`). 以该位置为0或1, 将该数组分为两类, 题目转化为第一题.
 ---
 
 这三题题意基本一样。
@@ -104,7 +104,7 @@ public int[] singleNumber(int[] nums) {
 
 
     int[] rets = {0, 0};
-    
+
     for (int num : nums)
     {
     //将数字分为两类，一类为某一位为0，另一类为某一位为1
@@ -120,5 +120,3 @@ public int[] singleNumber(int[] nums) {
     return rets;
 }
 ```
-
-

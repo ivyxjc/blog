@@ -5,7 +5,7 @@ title: 数根
 category: OJ
 tags: [math]
 keywords:
-description:
+description: 数根就是指将一个数num的各位数字相加之后得到一个数字,若该数大于等于10则继续该运算直到得到一个小于10的数, 这个数被称为num的树根.
 ---
 
 ## 简介

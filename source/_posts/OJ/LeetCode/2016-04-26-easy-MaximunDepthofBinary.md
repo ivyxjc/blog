@@ -5,13 +5,13 @@ title: Maximum Depth of Binary Tree
 category: OJ
 tags: [recursion]
 keywords:
-description:
+description: 寻找二叉树最长路径
 ---
 
 ## 寻找二叉树最长路径
 
 
-###　递归的方法
+### 递归的方法
 
 1.节点为`null`时，返回深度为0
 2.节点的左右子节点中有一个为`null`时，返回`1+maxDepth(root.left(or root.right))`
@@ -34,4 +34,3 @@ public int maxDepth(TreeNode root) {
         return (a>b?a:b);
     }
 ```
-
