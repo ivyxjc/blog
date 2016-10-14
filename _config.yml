@@ -83,5 +83,5 @@ limit: 20
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://git.coding.net/ivyxjc/blog_hexo.git,coding-pages
+  repo: https://git.coding.net/ivyxjc/ivyxjc.coding.net.git,coding-pages
   branch: master
