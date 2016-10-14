@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ivyxjc</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://www.ivyxjc.xyz/"/>
+  <updated>2016-10-14T00:56:30.245Z</updated>
+  <id>https://www.ivyxjc.xyz/</id>
+  
+  <author>
+    <name>Ivyxjc</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux 常用命令</title>
+    <link href="https://www.ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/"/>
+    <id>https://www.ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/</id>
+    <published>2016-10-09T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.245Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><h3 id="解压-zip文件"><a href="#解压-zip文件" class="headerlink" title="解压.zip文件"></a>解压.zip文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unzip xxx.zip</div></pre></td></tr></table></figure>
+<h3 id="解压tar-gz文件"><a href="#解压tar-gz文件" class="headerlink" title="解压tar.gz文件"></a>解压tar.gz文件</h3><h2 id="文件相关操作"><a href="#文件相关操作" class="headerlink" title="文件相关操作"></a>文件相关操作</h2><h3 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h3><p>mv dir1 dir2</p>
+<h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><h3 id="如何查看正在运行的进程"><a href="#如何查看正在运行的进程" class="headerlink" title="如何查看正在运行的进程"></a>如何查看正在运行的进程</h3><p><code>ps -A</code>:显示所有的进程<br><code>ps -a</code>:显示终端中包括其它用户的所有进程<br><code>ps -x</code>:显示无控制终端的进程</p>
+<h3 id="如何关闭正在运行的进程"><a href="#如何关闭正在运行的进程" class="headerlink" title="如何关闭正在运行的进程"></a>如何关闭正在运行的进程</h3><p><code>kill -9 xxx</code>:xxx是进程的PID</p>
+<h2 id="vim相关操作"><a href="#vim相关操作" class="headerlink" title="vim相关操作"></a>vim相关操作</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>?pattern 光标下方查找<br>/pattern 光标上方查找</p>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/">https://www.ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      介绍与解压, 文件操作, vim操作, 进程等相关的bash命令.
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://www.ivyxjc.xyz/categories/Linux/"/>
+    
+    
+      <category term="linux" scheme="https://www.ivyxjc.xyz/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>matplot basic</title>
+    <link href="https://www.ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/"/>
+    <id>https://www.ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/</id>
+    <published>2016-10-03T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.406Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="2d散点图"><a href="#2d散点图" class="headerlink" title="2d散点图"></a>2d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#设置颜色</span></div><div class="line">colors = [<span class="string">'#0000FF'</span>,<span class="string">'#3CB371'</span>]</div><div class="line"><span class="comment">#各点大小的list</span></div><div class="line">sizeLab=np.add(sizeLab,<span class="number">20</span>)</div><div class="line"><span class="comment"># print(sizeLab)</span></div><div class="line"></div><div class="line"><span class="comment">#设置横轴上下限</span></div><div class="line">plt.xlim(<span class="number">0</span>,<span class="number">25</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置横轴标号</span></div><div class="line"><span class="comment"># plt.xticks(np.linspace(0,15,5,endpoint=True))</span></div><div class="line"></div><div class="line"><span class="comment">#设置记号的标签</span></div><div class="line">plt.xticks([<span class="number">2</span>*np.pi, <span class="number">4</span>*np.pi, <span class="number">0</span>, np.pi/<span class="number">2</span>, np.pi],</div><div class="line">       [<span class="string">r'$2\pi$'</span>, <span class="string">r'$4\pi$'</span>, <span class="string">r'$0$'</span>, <span class="string">r'$\pi/2$'</span>, <span class="string">r'$\pi$'</span>])</div><div class="line"></div><div class="line"><span class="comment">#设置横纵坐标label</span></div><div class="line">plt.xlabel(<span class="string">"x 轴label"</span>)</div><div class="line">plt.ylabel(<span class="string">"y 轴label"</span>)</div><div class="line"></div><div class="line"></div><div class="line">plt.scatter(datingDataMat[:,<span class="number">1</span>],datingDataMat[:,<span class="number">2</span>],s=sizeLab, c=colors)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<h2 id="3d散点图"><a href="#3d散点图" class="headerlink" title="3d散点图"></a>3d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">fig=plt.figure()</div><div class="line">ax=fig.add_subplot(<span class="number">111</span>,projection=<span class="string">'3d'</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置坐标</span></div><div class="line">ax.set_xlabel(<span class="string">"飞行里程数"</span>)</div><div class="line">ax.set_ylabel(<span class="string">"游戏时间百分比"</span>)</div><div class="line">ax.set_zlabel(<span class="string">"冰激凌消耗量"</span>)</div><div class="line"></div><div class="line">type1=ax.scatter(dataDidnlike[:,<span class="number">0</span>], dataDidnlike[:,<span class="number">1</span>], dataDidnlike[:,<span class="number">2</span>], c=<span class="string">'#3c345b'</span>)</div><div class="line">type2=ax.scatter(dataSmallDoses[:,<span class="number">0</span>], dataSmallDoses[:,<span class="number">1</span>],dataSmallDoses[:,<span class="number">2</span>],c=<span class="string">"#4576f7"</span>)</div><div class="line">type3=ax.scatter(dataLargeDoses[:,<span class="number">0</span>], dataLargeDoses[:,<span class="number">1</span>], dataLargeDoses[:,<span class="number">2</span>],c=<span class="string">"#43ff1a"</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置图例</span></div><div class="line">ax.legend((type1, type2, type3), (<span class="string">u'不喜欢'</span>, <span class="string">u'魅力一般'</span>, <span class="string">u'极具魅力'</span>), loc=<span class="number">2</span>)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/">https://www.ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      matplotlib是一个常见的绘图库. 本文介绍如何使用matplotlib 绘制2d散点图, 3d散点图.
+    
+    </summary>
+    
+      <category term="Python" scheme="https://www.ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://www.ivyxjc.xyz/tags/python/"/>
+    
+      <category term="matplotlib" scheme="https://www.ivyxjc.xyz/tags/matplotlib/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>numpy user guide</title>
+    <link href="https://www.ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/"/>
+    <id>https://www.ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/</id>
+    <published>2016-10-03T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.409Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="numpy-tile-A-reprs"><a href="#numpy-tile-A-reprs" class="headerlink" title="numpy.tile(A,reprs)"></a>numpy.tile(A,reprs)</h2><p><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.tile.html" target="_blank" rel="external">numpy.tile</a></p>
+<p><code>numpy.tile(A, reps)</code></p>
+<p>This method will return a <code>max( d, A.ndim)</code> dimension array( <code>d= len( reprs)</code>).</p>
+<p>if<code>d&gt; A.ndim</code>, it will return a d-dimension array by prepending new axes;<br><br>etc.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</div><div class="line">&gt;&gt;&gt;np.tile(a,(<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>))</div><div class="line"></div><div class="line">[[[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]</div><div class="line"></div><div class="line"> [[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]]</div></pre></td></tr></table></figure>
+<p>if <code>d&lt; A.ndim</code>, it will return an A.ndim-dimension array by prepending 1’s to it .<br>For example, for an shape of(1,2,2,3), a reps of (2,3) will be treated as (1,1,2,3)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;a = np.array([[[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]]])</div><div class="line">&gt;&gt;&gt;np.tile(a,(<span class="number">2</span>,<span class="number">2</span>))</div><div class="line"></div><div class="line">[[[[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">   [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">   [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">   [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]]]</div><div class="line"></div><div class="line">&gt;&gt;&gt;a = np.array([[[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]]])</div><div class="line">&gt;&gt;&gt;np.tile(a,(<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>))</div><div class="line"></div><div class="line">[[[[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">   [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]</div><div class="line"></div><div class="line">  [[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">   [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]]]</div></pre></td></tr></table></figure>
+<h2 id="numpy-sum"><a href="#numpy-sum" class="headerlink" title="numpy.sum()"></a>numpy.sum()</h2><p><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html" target="_blank" rel="external">numpy.sum()</a></p>
+<p><code>numpy.sum(a, axis=None, dtype=None, out=None, keepdims=False)</code></p>
+<h2 id="axis"><a href="#axis" class="headerlink" title="axis"></a>axis</h2><p>This is a litte complex. <code>abs(axis)</code> must be less than <code>a.ndim</code>.</p>
+<p><img src="/assets/img/posts/numpy_sum_1.jpg" alt=""><br><img src="/assets/img/posts/numpy_sum_2,jpg" alt=""></p>
+<h3 id="dtype"><a href="#dtype" class="headerlink" title="dtype"></a>dtype</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;b=np.array([<span class="number">0.3</span>,<span class="number">0.4</span>,<span class="number">0.9</span>,<span class="number">1.5</span>,<span class="number">1.9</span>])</div><div class="line">&gt;&gt;&gt;print(b.sum(dtype=np.int32))</div><div class="line"></div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
+<h3 id="keepdims"><a href="#keepdims" class="headerlink" title="keepdims"></a>keepdims</h3><p>If this parameter is assigned to True, the it will return an array as dimension with the size that input array is</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;b=np.array([[[<span class="number">0.3</span>,<span class="number">0.4</span>,<span class="number">0.9</span>,<span class="number">1.5</span>,<span class="number">1.9</span>]]])</div><div class="line">&gt;&gt;&gt;print(b.sum())</div><div class="line"></div><div class="line"><span class="number">5.0</span></div><div class="line"></div><div class="line"></div><div class="line">&gt;&gt;&gt;b=np.array([[[<span class="number">0.3</span>,<span class="number">0.4</span>,<span class="number">0.9</span>,<span class="number">1.5</span>,<span class="number">1.9</span>]]])</div><div class="line">&gt;&gt;&gt;print(b.sum(keepdims=<span class="keyword">True</span>))</div><div class="line"></div><div class="line">[[[ <span class="number">5.</span>]]]</div></pre></td></tr></table></figure>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/">https://www.ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      numpy是常见的科学计算库. 本文介绍numpy库的一些常见操作,例如numpy.tile(A, reprs), numpy.sum(), axis,  dtye等相关知识.
+    
+    </summary>
+    
+      <category term="Python" scheme="https://www.ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://www.ivyxjc.xyz/tags/python/"/>
+    
+      <category term="numpy" scheme="https://www.ivyxjc.xyz/tags/numpy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ActionBarCompat</title>
+    <link href="https://www.ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/"/>
+    <id>https://www.ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/</id>
+    <published>2016-09-23T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.280Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">values/style</div><div class="line"></div><div class="line">## 布局文件中添加menu</div><div class="line"></div><div class="line">```xml</div><div class="line">menu_main.xml</div><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">      <span class="attr">xmlns:support</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/menu_setting"</span></div><div class="line">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_action_settings"</span></div><div class="line">        <span class="attr">android:title</span>=<span class="string">"@string/menu_setting"</span></div><div class="line">        <span class="attr">support:showAsAction</span>=<span class="string">"never"</span>/&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/menu_refresh"</span></div><div class="line">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_action_refresh"</span></div><div class="line">        <span class="attr">android:title</span>=<span class="string">"@string/menu_refresh"</span></div><div class="line">        <span class="attr">support:showAsAction</span>=<span class="string">"always"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Activity中添加menu"><a href="#Activity中添加menu" class="headerlink" title="Activity中添加menu"></a>Activity中添加menu</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">values/ids.xml</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"menu_location"</span> <span class="attr">type</span>=<span class="string">"id"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">    getMenuInflater().inflate(R.menu.menu_main,menu);</div><div class="line">    MenuItem location=menu.add(<span class="number">0</span>,R.id.menu_location,<span class="number">0</span>,<span class="string">"Location"</span>);</div><div class="line">    location.setIcon(R.mipmap.ic_action_location);</div><div class="line">    MenuItemCompat.setShowAsAction(location,MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (item.getItemId())&#123;</div><div class="line">        <span class="keyword">case</span> R.id.menu_setting:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">case</span> R.id.menu_location:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">case</span> R.id.menu_refresh:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><h3 id="运行时更改菜单项"><a href="#运行时更改菜单项" class="headerlink" title="运行时更改菜单项"></a>运行时更改菜单项</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mButtonForbidRefresh.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">           <span class="keyword">private</span> <span class="keyword">int</span> i=<span class="number">0</span>;</div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">               i++;</div><div class="line">               <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">1</span>)</div><div class="line">                   mButtonForbidRefresh.setActivated(<span class="keyword">true</span>);</div><div class="line">               <span class="keyword">else</span></div><div class="line">                   mButtonForbidRefresh.setActivated(<span class="keyword">false</span>);</div><div class="line">               invalidateOptionsMenu();</div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onPrepareOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">        menu.clear();</div><div class="line">        getMenuInflater().inflate(R.menu.menu_main, menu);</div><div class="line">        MenuItem item=menu.findItem(R.id.menu_refresh);</div><div class="line">        <span class="keyword">if</span>(mButtonForbidRefresh.isActivated())&#123;</div><div class="line">           item.setEnabled(<span class="keyword">false</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        MenuItem location = menu.add(<span class="number">0</span>, R.id.menu_location, Menu.CATEGORY_SECONDARY, <span class="string">"Location"</span>);</div><div class="line">        location.setIcon(R.mipmap.ic_action_location);</div><div class="line">        MenuItemCompat.setShowAsAction(location, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onPrepareOptionsMenu(menu);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="onPrepareOptionsMenu-Menu-menu-和onCreateOptionsMenu-Menu-menu-区别"><a href="#onPrepareOptionsMenu-Menu-menu-和onCreateOptionsMenu-Menu-menu-区别" class="headerlink" title="onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别"></a>onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别</h3><p><code>onCreateOptionsMenu(Menu menu)</code>只在最初的时候会调用每次点击menu都会<br>调用一次<code>onPrepareOptionsMenu(Menu menu)</code>.使用<code>invalidateOptionsMenu()</code><br>会直接调用onPrepareOptionsMenu(Menu menu);</p>
+<h3 id="多个Activity共用相同ActionBar"><a href="#多个Activity共用相同ActionBar" class="headerlink" title="多个Activity共用相同ActionBar"></a>多个Activity共用相同ActionBar</h3><p>如果应用包含多个 Activity，且其中某些 Activity 提供相同的选项菜单，则可考虑创建一个仅<br>实现<code>onCreateOptionsMenu()</code> 和 <code>onOptionsItemSelected()</code>方法的 Activity。然后，<br>为每个应共享相同选项菜单的 Activity 扩展此类。 通过这种方式，您可以管理一个用于<br>处理菜单操作的代码集，且每个子级类均会继承菜单行为。若要将菜单项添加到一个<br>子级 Activity，请重写该 Activity 中的 <code>onCreateOptionsMenu()</code>。<br>调用 <code>super.onCreateOptionsMenu(menu)</code>，以便创建原始菜单项，<br>然后使用 <code>menu.add()</code> 添加新菜单项。此外，您还可以替代各个菜单项的超类行为。</p>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/">https://www.ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      如何添加菜单项, 以及如何在运行时更改菜单项.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_UI" scheme="https://www.ivyxjc.xyz/tags/android-UI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RecyclerView</title>
+    <link href="https://www.ivyxjc.xyz/2016/09/18/android/UI%E7%9B%B8%E5%85%B3/2016-09-18-RecyclerView/"/>
+    <id>https://www.ivyxjc.xyz/2016/09/18/android/UI相关/2016-09-18-RecyclerView/</id>
+    <published>2016-09-17T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.280Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="RecyclerView-设置布局格式"><a href="#RecyclerView-设置布局格式" class="headerlink" title="RecyclerView 设置布局格式"></a>RecyclerView 设置布局格式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mRecyclerView = (RecyclerView) v.findViewById(R.id.main_rv);</div><div class="line"><span class="comment">//类似ListView显示用</span></div><div class="line">mRecyclerView.setLayoutManager(<span class="keyword">new</span> LinearLayoutManager(getActivity()));</div><div class="line"><span class="comment">//类似GridView显示</span></div><div class="line">mRecyclerView.setLayoutManager(<span class="keyword">new</span> GridLayoutManager(getActivity(), <span class="number">3</span>));</div></pre></td></tr></table></figure>
+<h2 id="RecyclerView-添加适配器-以及设置item点击监听"><a href="#RecyclerView-添加适配器-以及设置item点击监听" class="headerlink" title="RecyclerView 添加适配器 以及设置item点击监听"></a>RecyclerView 添加适配器 以及设置item点击监听</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">MainFragment.java</div><div class="line"></div><div class="line">mRecyclerViewAdapter = <span class="keyword">new</span> RecyclerViewAdapter(getActivity(), mItems, <span class="keyword">false</span>);</div><div class="line">mRecyclerView.setAdapter(mRecyclerViewAdapter)</div><div class="line"></div><div class="line">mRecyclerViewAdapter.setOnItemClickListener(<span class="keyword">new</span> RecyclerViewAdapter.OnItemClickListenerCustom() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(String id, String title)</span> </span>&#123;</div><div class="line">                Log.i(LogKeys.MAIN_FRAGMENT, <span class="string">"item is clicked "</span>);</div><div class="line">                Intent intent = <span class="keyword">new</span> Intent(getActivity(), MovieDetailActivity.class);</div><div class="line">                intent.putExtra(TransferKeys.MAIN_MOVIE_DETAIL_ID, id);</div><div class="line">                intent.putExtra(TransferKeys.MAIN_MOVIE_DETAIL_MOVIE_NAME, title);</div><div class="line">                startActivity(intent);</div><div class="line">                Log.i(LogKeys.MAIN_FRAGMENT, <span class="string">"startactivity"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerView</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Context mContext;</div><div class="line">    <span class="keyword">private</span> List&lt;MainItem&gt; mData;</div><div class="line">    <span class="keyword">private</span> OnItemClickListenerCustom mCallback;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mIsComingMovie;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mTotalCount;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnItemClickListenerCustom</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(String id,String title)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter_Main</span><span class="params">(Context context, List&lt;MainItem&gt; data,</span></span></div><div class="line">                          <span class="keyword">boolean</span> isComingMovie) &#123;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.mContext = context;</div><div class="line">        <span class="keyword">this</span>.mData = data;</div><div class="line">        <span class="keyword">this</span>.mIsComingMovie=isComingMovie;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">(ArrayList&lt;MainItem&gt; data)</span></span>&#123;</div><div class="line">        mData.addAll(data);</div><div class="line">        notifyDataSetChanged();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</div><div class="line">        View view=LayoutInflater.from(mContext)</div><div class="line">                                .inflate(R.layout.item_movie_main,parent,<span class="keyword">false</span>);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ItemViewHolder(view);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(RecyclerView.ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        ((ItemViewHolder)holder).update();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mData.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnItemClickListener</span><span class="params">(OnItemClickListenerCustom listener)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.mCallback=listener;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ItemViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</div><div class="line">        TextView textTitle;</div><div class="line">        MainItem mMainItem;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ItemViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>(itemView);</div><div class="line">            <span class="comment">//初始化控件</span></div><div class="line">            itemView.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="comment">//填充控件</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span>(mCallback!=<span class="keyword">null</span>)&#123;</div><div class="line">                mCallback.onItemClick(mMainItem.getMovieId(),mMainItem.getTitle());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="RecyclerView上滑加载"><a href="#RecyclerView上滑加载" class="headerlink" title="RecyclerView上滑加载"></a>RecyclerView上滑加载</h2><p>要使FetchItemTask顺序执行, 否则当下滑触发loadMoreData时,会出现多个线程, 若这几个线程同时<br>进行,会导致数据重复加载, 这些Task顺序执行, 只需要在doInBackground执行时<br>检查star&lt;mRecyclerViewAdapter.getStart()<br>若true, 则说明该线程为重复线程 return null<br>否则, 执行之后的步骤</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line">MainFragmentBase.java</div><div class="line">mRecyclerView.addOnScrollListener(<span class="keyword">new</span> RecyclerView.OnScrollListener()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> lastVisibleItem;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(RecyclerView recyclerView,</span></span></div><div class="line">                                     <span class="keyword">int</span> newState) &#123;</div><div class="line">        <span class="keyword">super</span>.onScrollStateChanged(recyclerView, newState);</div><div class="line">        <span class="keyword">if</span> (newState == SCROLL_STATE_IDLE</div><div class="line">                &amp;&amp; lastVisibleItem + <span class="number">1</span> &gt;= mRecyclerViewAdapter.getItemCount()</div><div class="line">                &amp;&amp; mRecyclerViewAdapter.getItemCount() &lt; mRecyclerViewAdapter.getTotalDataCount()) &#123;</div><div class="line">            loadMoreData(mRecyclerViewAdapter.getStart());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</div><div class="line">        LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerView.getLayoutManager();</div><div class="line">        lastVisibleItem = layoutManager.findLastVisibleItemPosition();</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">loadMoreData</span><span class="params">(<span class="keyword">int</span> start)</span></span>;</div><div class="line"></div><div class="line"></div><div class="line">MainFragment.java extentds MainFragmentBase.java</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line"></div><div class="line">    <span class="keyword">new</span> FetchItemTask(<span class="number">0</span>).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">loadMoreData</span><span class="params">(<span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">    <span class="keyword">new</span> FetchItemTask(start).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">FetchItemTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Void</span>, <span class="title">ArrayList</span>&lt;<span class="title">MainItem</span>&gt;&gt; </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> start=<span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FetchItemTask</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</div><div class="line">        start=s;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> ArrayList&lt;MainItem&gt; <span class="title">doInBackground</span><span class="params">(Void... params)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(start&lt;mRecyclerViewAdapter.getStart())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span></div><div class="line">        &#125;</div><div class="line">        DoubanFetchrMain df=<span class="keyword">new</span> DoubanFetchrMain(<span class="number">0</span>,start);</div><div class="line">        mRecyclerViewAdapter.setTotalCount(df.getTotalCount());</div><div class="line">        <span class="keyword">return</span> df.fetchItems_SubjectInTheaters();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(ArrayList&lt;MainItem&gt; galleryItems)</span></span>&#123;</div><div class="line">        mItems = galleryItems;</div><div class="line">        <span class="keyword">if</span>(mItems==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        mRecyclerViewAdapter.addMoreData(mItems,start);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>点击图片进入电影详细页面时, 如果在详细页面图片未加载时返回, 应用会crash.<br><br>应该是此时ImageView已经被销毁了, 所以就造成NullPointerException.</p>
+<p>官方说已经解决这个问题, 但是下面这写法还是会crash.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide.with(getActivity())</div><div class="line">     .load(url)</div><div class="line">     .diskCacheStrategy(DiskCacheStrategy.ALL)</div><div class="line">     .centerCrop()</div><div class="line">     .into(imageMovie);</div></pre></td></tr></table></figure>
+<p>更改为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">onCreate(...)&#123;</div><div class="line">mRequestManager=Glide.with(getActivity());</div><div class="line">&#125;</div><div class="line"></div><div class="line">...</div><div class="line">mRequestManager</div><div class="line">           .load(url)</div><div class="line">           .diskCacheStrategy(DiskCacheStrategy.ALL)</div><div class="line">           .centerCrop()</div><div class="line">           .into(imageMovie);</div></pre></td></tr></table></figure>
+<p>这样就不会出问题.</p>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/09/18/android/UI相关/2016-09-18-RecyclerView/">https://www.ivyxjc.xyz/2016/09/18/android/UI相关/2016-09-18-RecyclerView/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;RecyclerView-设置布局格式&quot;&gt;&lt;a href=&quot;#RecyclerView-设置布局格式&quot; class=&quot;headerlink&quot; title=&quot;RecyclerView 设置布局格式&quot;&gt;&lt;/a&gt;RecyclerView 设置布局格式&lt;/h2&gt;&lt;figu
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="UI" scheme="https://www.ivyxjc.xyz/tags/UI/"/>
+    
+      <category term="RecyclerView" scheme="https://www.ivyxjc.xyz/tags/RecyclerView/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CriminalIntent程序中ViewPager相关内容</title>
+    <link href="https://www.ivyxjc.xyz/2016/07/08/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-08-ViewPager/"/>
+    <id>https://www.ivyxjc.xyz/2016/07/08/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-08-ViewPager/</id>
+    <published>2016-07-07T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.339Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="FragmenPagerAdapter和FragmenStatePagerAdapter"><a href="#FragmenPagerAdapter和FragmenStatePagerAdapter" class="headerlink" title="FragmenPagerAdapter和FragmenStatePagerAdapter"></a>FragmenPagerAdapter和FragmenStatePagerAdapter</h2><p>这两者的区别主要在于卸载不再需要的fragment时采取的方法不同。</p>
+<p>使用FragmentStatePagerAdapter会销毁掉不需要的fragment。事务提交后，可以将fragment从activity的FragmentManager中彻底移除。该类名中的<code>state</code>表明在销毁fragment时，它会将<code>onSaveInstanceState(Bundle)</code>方法中的Bundle信息保存下来。用户切换回来时，保存的实例可用于回复生成新的fragment。</p>
+<p>FragmentPagerAdapter对于不再需要的fragment，FragmentManager选择调用事务的<code>detach(fragment)</code>方法，而非<code>remove(fragment)</code>方法，FragmentPagerAdapter只是销毁fragment的视图，但是仍将实例保留在FragmentManager中。FragmentPagerAdapter创建的fragment不会被销毁。</p>
+<p>由上可知:</p>
+<ol>
+<li>FragmentStatePagerAdapter更省内存，所以当有大量的fragment时，推荐使用FragmentStatePagerAdapter.</li>
+<li>但是当用户界面只有少量fragment时，推荐FragmentPagerAdapter。</li>
+</ol>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/08/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-08-ViewPager/">https://www.ivyxjc.xyz/2016/07/08/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-08-ViewPager/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      FragmenPagerAdapter和FragmenStatePagerAdapter这两者的区别主要在于卸载不再需要的fragment时采取的方法不同。
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_view_pager" scheme="https://www.ivyxjc.xyz/tags/android-view-pager/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简易计算器开发</title>
+    <link href="https://www.ivyxjc.xyz/2016/07/07/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91/2016-07-07-calculator/"/>
+    <id>https://www.ivyxjc.xyz/2016/07/07/android/开发实战/个人开发/2016-07-07-calculator/</id>
+    <published>2016-07-06T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.352Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="edittext按回车时操作"><a href="#edittext按回车时操作" class="headerlink" title="edittext按回车时操作"></a>edittext按回车时操作</h2><p>如果有多行，没一行有多个edittext时，按回车时，它会到下一行的edittext之中，而不是同一行的下一个editext。</p>
+<p>在xml文件中添加<code>imeOptions</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">EditText</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:inputType</span>=<span class="string">"numberDecimal"</span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/editText3"</span></div><div class="line">        <span class="attr">android:imeOptions</span>=<span class="string">"actionNext"</span>/&gt;</div></pre></td></tr></table></figure>
+<p>但是最后一行按回车回跳到下一行最后一个而不是下一行第一个。</p>
+<h2 id="listfragment自己编写listadapter中button监听问题"><a href="#listfragment自己编写listadapter中button监听问题" class="headerlink" title="listfragment自己编写listadapter中button监听问题"></a>listfragment自己编写listadapter中button监听问题</h2><p>listfragment自己编写listadapter中button总是监听最后一个item中的数据。</p>
+<p><img src="http://oezmbgg4j.bkt.clouddn.com/listview_button_click.gif" alt=""></p>
+<p>无论点击哪一个button都是计算最后一行。</p>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/07/android/开发实战/个人开发/2016-07-07-calculator/">https://www.ivyxjc.xyz/2016/07/07/android/开发实战/个人开发/2016-07-07-calculator/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      一个简易计算器的开发中遇到的EditText相关问题.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_project" scheme="https://www.ivyxjc.xyz/tags/android-project/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>代理相关</title>
+    <link href="https://www.ivyxjc.xyz/2016/07/06/%E6%95%88%E7%8E%87/2016-07-06-proxy/"/>
+    <id>https://www.ivyxjc.xyz/2016/07/06/效率/2016-07-06-proxy/</id>
+    <published>2016-07-05T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.419Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="github使用代理"><a href="#github使用代理" class="headerlink" title="github使用代理"></a>github使用代理</h2><p>git添加代理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy &apos;http://127.0.0.1:1080&apos;</div><div class="line">git config --global https.proxy &apos;http://127.0.0.1:1080&apos;</div></pre></td></tr></table></figure>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/06/效率/2016-07-06-proxy/">https://www.ivyxjc.xyz/2016/07/06/效率/2016-07-06-proxy/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;github使用代理&quot;&gt;&lt;a href=&quot;#github使用代理&quot; class=&quot;headerlink&quot; title=&quot;github使用代理&quot;&gt;&lt;/a&gt;github使用代理&lt;/h2&gt;&lt;p&gt;git添加代理：&lt;/p&gt;
+&lt;figure class=&quot;highlight 
+    
+    </summary>
+    
+      <category term="效率" scheme="https://www.ivyxjc.xyz/categories/%E6%95%88%E7%8E%87/"/>
+    
+    
+      <category term="faq" scheme="https://www.ivyxjc.xyz/tags/faq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CriminalIntent程序中Fragment，Activity通信</title>
+    <link href="https://www.ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-Intent/"/>
+    <id>https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-Intent/</id>
+    <published>2016-07-05T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.332Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="最简单的应用"><a href="#最简单的应用" class="headerlink" title="最简单的应用"></a>最简单的应用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent=<span class="keyword">new</span> Intent(getActivity(), ActivityCrimeBase.class);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<h2 id="使用extra添加信息"><a href="#使用extra添加信息" class="headerlink" title="使用extra添加信息"></a>使用extra添加信息</h2><h3 id="附加extra信息"><a href="#附加extra信息" class="headerlink" title="附加extra信息"></a>附加extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">intent.putExtra(FragmentCrime.EXTRA_CRIME_ID,c.getId());</div></pre></td></tr></table></figure>
+<h3 id="获取extra信息"><a href="#获取extra信息" class="headerlink" title="获取extra信息"></a>获取extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">FragmentCrime.java</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXTRA_CRIME_ID=<span class="string">"com.jc.criminalIntent2.crime_id"</span>;</div><div class="line">....</div><div class="line">....</div><div class="line">UUID crimeId=(UUID)getActivity()</div><div class="line">                .getIntent()</div><div class="line">                .getSerializableExtra(EXTRA_CRIME_ID);</div></pre></td></tr></table></figure>
+<p>此方法会破坏fragment的封装性，因为这时fragment总是需要由某个具体的activity托管。</p>
+<p>为了解决这一问题，可以就爱你个<code>mCrimeId</code>存放在fragment的arguments bundle中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ActivityCrime.java</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCrime</span> <span class="keyword">extends</span> <span class="title">ActivitySetFragmentBase</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Fragment <span class="title">createFragment</span><span class="params">()</span> </span>&#123;</div><div class="line">        UUID crimeId=(UUID)getIntent()</div><div class="line">                .getSerializableExtra(FragmentCrime.EXTRA_CRIME_ID);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> FragmentCrime.newInstance(crimeId);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">FragmentCrime.<span class="function">java</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> &#123;</div><div class="line">     <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">     UUID crimeId=(UUID)getArguments()</div><div class="line">             .getSerializable(EXTRA_CRIME_ID);</div><div class="line">     mCrime=CrimeLab.get(getActivity()).getCrime(crimeId);</div><div class="line"> &#125;</div><div class="line"></div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FragmentCrime <span class="title">newInstance</span><span class="params">(UUID crimeId)</span></span>&#123;</div><div class="line"></div><div class="line">     Bundle args=<span class="keyword">new</span> Bundle();</div><div class="line">     args.putSerializable(EXTRA_CRIME_ID,crimeId);</div><div class="line">     FragmentCrime fragment=<span class="keyword">new</span> FragmentCrime();</div><div class="line">     fragment.setArguments(args);</div><div class="line">     <span class="keyword">return</span> fragment;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-Intent/">https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-Intent/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      使用Intent在Fragment, Activity中进行通信.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_adapter" scheme="https://www.ivyxjc.xyz/tags/android-adapter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CriminalIntent程序中ListFragment相关内容</title>
+    <link href="https://www.ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-ListFragment/"/>
+    <id>https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-ListFragment/</id>
+    <published>2016-07-05T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.336Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="定制adapter"><a href="#定制adapter" class="headerlink" title="定制adapter"></a>定制adapter</h2><p>adapter负责：</p>
+<ol>
+<li>创建必要的视图对象</li>
+<li>用模型层数据填充视图对性爱那个</li>
+<li>将准备好的视图对象返回给ListView</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">内部类</div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">CrimeAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">Crime</span>&gt;</span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">CrimeAdapter</span><span class="params">(ArrayList&lt;Crime&gt; crimes)</span></span>&#123;</div><div class="line">            <span class="keyword">super</span>(getActivity(),<span class="number">0</span>,crimes);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span>(convertView==<span class="keyword">null</span>)&#123;</div><div class="line">                convertView=getActivity()</div><div class="line">                        .getLayoutInflater()</div><div class="line">                        .inflate(R.layout.list_item_crime,<span class="keyword">null</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            Crime c=(Crime)(getListAdapter()).getItem(position);</div><div class="line"></div><div class="line">            TextView titleTextView=(TextView)convertView.findViewById(R.id.list_item_crime_title_TextView);</div><div class="line">            TextView dateTextView=(TextView)convertView.findViewById(R.id.list_item_crime_date_TextView);</div><div class="line">            CheckBox solvedCheckBox=(CheckBox)convertView.findViewById(R.id.list_item_crime_isSolved_CheckBox);</div><div class="line"></div><div class="line">            solvedCheckBox.setChecked(c.isSolved());</div><div class="line">            <span class="keyword">return</span> convertView;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure>
+<p>注： 由于CheckBox默认是可聚焦的，也就是点击列表向会被解读为切换CheckBox的状态，因而无法触发<code>onListItemClick()</code>方法。解决方法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">CheckBox</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/list_item_crime_isSolved_CheckBox"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></div><div class="line">    <span class="attr">android:focusable</span>=<span class="string">"false"</span>/&gt;</div></pre></td></tr></table></figure>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-ListFragment/">https://www.ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-ListFragment/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;定制adapter&quot;&gt;&lt;a href=&quot;#定制adapter&quot; class=&quot;headerlink&quot; title=&quot;定制adapter&quot;&gt;&lt;/a&gt;定制adapter&lt;/h2&gt;&lt;p&gt;adapter负责：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建必要的视图对象&lt;/li&gt;
+&lt;li
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_adapter" scheme="https://www.ivyxjc.xyz/tags/android-adapter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>重装电脑时的设置问题</title>
+    <link href="https://www.ivyxjc.xyz/2016/07/03/%E6%95%88%E7%8E%87/2016-07-03-Reset-PC/"/>
+    <id>https://www.ivyxjc.xyz/2016/07/03/效率/2016-07-03-Reset-PC/</id>
+    <published>2016-07-02T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.416Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="调换Ctrl和Caps-Lock键"><a href="#调换Ctrl和Caps-Lock键" class="headerlink" title="调换Ctrl和Caps Lock键"></a>调换<code>Ctrl</code>和<code>Caps Lock</code>键</h2><p><code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout</code>中添加<code>Scancode Map</code>二进制项，内容为</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">0000 </span><span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></div><div class="line"><span class="symbol">0008 </span><span class="number">03</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">3</span>A <span class="number">00</span> <span class="number">1D</span> <span class="number">00</span></div><div class="line"><span class="symbol">0010 </span><span class="number">1D</span> <span class="number">00</span> <span class="number">3</span>A <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span></div></pre></td></tr></table></figure>
+<h2 id="java环境设置"><a href="#java环境设置" class="headerlink" title="java环境设置"></a>java环境设置</h2><p>环境变量中添加<code>JAVA_HOME</code>:<code>C:\Program Files\Java\jdk1.8.0_91</code></p>
+<p><code>Path</code>中添加<code>$JAVA_HOME$\jre\bin</code>和<code>$JAVA_HOME$\bin</code></p>
+<h2 id="python环境变量设置"><a href="#python环境变量设置" class="headerlink" title="python环境变量设置"></a>python环境变量设置</h2><p><code>path</code>中添加<code>c:\python35</code></p>
+<h2 id="jetbrains系列idea设置"><a href="#jetbrains系列idea设置" class="headerlink" title="jetbrains系列idea设置"></a>jetbrains系列idea设置</h2><p>更改程序主目录下<code>bin/idea.properties</code>中的内容</p>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/07/03/效率/2016-07-03-Reset-PC/">https://www.ivyxjc.xyz/2016/07/03/效率/2016-07-03-Reset-PC/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;调换Ctrl和Caps-Lock键&quot;&gt;&lt;a href=&quot;#调换Ctrl和Caps-Lock键&quot; class=&quot;headerlink&quot; title=&quot;调换Ctrl和Caps Lock键&quot;&gt;&lt;/a&gt;调换&lt;code&gt;Ctrl&lt;/code&gt;和&lt;code&gt;Caps Lock
+    
+    </summary>
+    
+      <category term="效率" scheme="https://www.ivyxjc.xyz/categories/%E6%95%88%E7%8E%87/"/>
+    
+    
+      <category term="faq" scheme="https://www.ivyxjc.xyz/tags/faq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在Centos 6中升级python</title>
+    <link href="https://www.ivyxjc.xyz/2016/06/09/%E6%95%88%E7%8E%87/Python%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/2016-06-09-update-python/"/>
+    <id>https://www.ivyxjc.xyz/2016/06/09/效率/Python相关问题/2016-06-09-update-python/</id>
+    <published>2016-06-08T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.428Z</updated>
+    
+    <content type="html"><![CDATA[<p>Centos默认的python使用的是<code>python2.6</code>,我常用的是<code>python3.5</code>,所以需要升级python.</p>
+<p>安装过程:</p>
+<ol>
+<li>下载python3.5.1<br><code>wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz</code></li>
+<li>解压并安装<ol>
+<li><code>tar zxvf Python-3.5.1.tgz</code></li>
+<li><code>cd Python-3.5.1</code></li>
+<li><code>./configure --prefix=/usr/local/python3.5</code></li>
+<li><code>make</code></li>
+<li><code>make install</code></li>
+</ol>
+</li>
+<li>备份原有python命令执行文件<br><code>mv /usr/bin/python /usr/bin/pythonbak</code></li>
+<li>创建新的python软连接<br><code>ln -s /usr/local/python3.5/bin/python3.5 /usr/bin/python</code></li>
+</ol>
+<p>问题:</p>
+<ol>
+<li><p>2.3步可能出现<code>no acceptable C compiler found in $PATH</code>问题,这是因为完整的安装<code>development tools</code>.<br> 解决方法:<code>yum groupinstall &quot;Development Tools&quot;</code></p>
+</li>
+<li><p>pip无法使用,出现<code>versionconflic</code>的问题,好像是因为pip版本的问题.进入pip的目录,删除pip.再直接下载上述错误信息中显示的<code>requirement.parse()</code>中的pip版本,解压缩,安装即可.</p>
+</li>
+</ol>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/09/效率/Python相关问题/2016-06-09-update-python/">https://www.ivyxjc.xyz/2016/06/09/效率/Python相关问题/2016-06-09-update-python/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Centos默认的python使用的是&lt;code&gt;python2.6&lt;/code&gt;,我常用的是&lt;code&gt;python3.5&lt;/code&gt;,所以需要升级python.&lt;/p&gt;
+&lt;p&gt;安装过程:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载python3.5.1&lt;br&gt;&lt;code&gt;wget
+    
+    </summary>
+    
+      <category term="效率" scheme="https://www.ivyxjc.xyz/categories/%E6%95%88%E7%8E%87/"/>
+    
+    
+      <category term="faq" scheme="https://www.ivyxjc.xyz/tags/faq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>猫眼票房数据获取</title>
+    <link href="https://www.ivyxjc.xyz/2016/06/08/python/Spider/%E7%A5%A8%E6%88%BF%E7%88%AC%E8%99%AB/2016-06-08-maoyan/"/>
+    <id>https://www.ivyxjc.xyz/2016/06/08/python/Spider/票房爬虫/2016-06-08-maoyan/</id>
+    <published>2016-06-07T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.402Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/08/python/Spider/票房爬虫/2016-06-08-maoyan/">https://www.ivyxjc.xyz/2016/06/08/python/Spider/票房爬虫/2016-06-08-maoyan/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;本文链接：&lt;a href=&quot;https://www.ivyxjc.xyz/2016/06/08/python/Spider/票房爬虫/2016-06-08-maoyan/&quot;&gt;https://www.ivyxjc.xyz/2016/06/08/python/Spid
+    
+    </summary>
+    
+      <category term="Python" scheme="https://www.ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://www.ivyxjc.xyz/tags/python/"/>
+    
+      <category term="spider" scheme="https://www.ivyxjc.xyz/tags/spider/"/>
+    
+      <category term="pythonspider" scheme="https://www.ivyxjc.xyz/tags/pythonspider/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sunshine开发实战:架构(与官方原版有一些不同)</title>
+    <link href="https://www.ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-sunshine-build-custom/"/>
+    <id>https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-sunshine-build-custom/</id>
+    <published>2016-06-02T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.349Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.</p>
+<h2 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h2><p>点击刷新按钮,联网获取数据,处理数据,若数据非null,存入数据库,从数据库中读取数据,刷新UI.</p>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-sunshine-build-custom/">https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-sunshine-build-custom/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;搜索&quot;&gt;&lt;a href=&quot;#搜索&quot; class=&quot;headerlink&quot; title=&quot;搜索&quot;&gt;&lt;/a&gt;搜索&lt;/h2&gt;&lt;p&gt;通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.&lt;/p&gt;
+&lt;h2 id=&quot;刷新&quot;&gt;&lt;a href=&quot;#刷新&quot; 
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sunshine开发实战:测试</title>
+    <link href="https://www.ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-android-test/"/>
+    <id>https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-android-test/</id>
+    <published>2016-06-02T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.346Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestPractice</span> <span class="keyword">extends</span> <span class="title">AndroidTestCase</span> </span>&#123;</div><div class="line">    <span class="comment">//测试前进行的工作</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">super</span>.setUp();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//所有测试的类必须以test开头</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testThatDemonstratesAssertations</span><span class="params">()</span> <span class="keyword">throws</span> Throwable</span>&#123;</div><div class="line">        <span class="keyword">int</span> a=<span class="number">5</span>;</div><div class="line">        <span class="keyword">int</span> b=<span class="number">3</span>;</div><div class="line">        <span class="keyword">int</span> c=<span class="number">5</span>;</div><div class="line">        <span class="keyword">int</span> d=<span class="number">10</span>;</div><div class="line"></div><div class="line">        assertEquals(<span class="string">"X should be equal"</span>,a,c);</div><div class="line">        assertTrue(<span class="string">"Y should be true"</span>,d&gt;a);</div><div class="line">        assertFalse(<span class="string">"Z should be false"</span>,a==b);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//测试之后进行的工作</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">super</span>.tearDown();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后点击<code>run &#39;Tests in ...</code>即可.<br><img src="http://oezmbgg4j.bkt.clouddn.com/android_test_run.png" alt=""></p>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-android-test/">https://www.ivyxjc.xyz/2016/06/03/android/开发实战/Sunshine开发实战/2016-06-03-android-test/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      Android开发中如何进行测试的简单例子.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_test" scheme="https://www.ivyxjc.xyz/tags/android-test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Activity的生命周期</title>
+    <link href="https://www.ivyxjc.xyz/2016/06/02/android/lifecycle/2016-06-02-lifecycle-basic/"/>
+    <id>https://www.ivyxjc.xyz/2016/06/02/android/lifecycle/2016-06-02-lifecycle-basic/</id>
+    <published>2016-06-01T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.314Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ol>
+<li>`onCreate()``</li>
+<li><code>onStart()</code></li>
+<li><code>onResume()</code></li>
+<li><code>onPause()</code></li>
+<li><code>onPause()</code></li>
+<li><code>onDestory()</code></li>
+</ol>
+<h3 id="onCreate-的作用"><a href="#onCreate-的作用" class="headerlink" title="onCreate()的作用"></a><code>onCreate()</code>的作用</h3><ol>
+<li>实例化组件并将组件放在屏幕上</li>
+<li>引用已经实例化的组件</li>
+<li>为组件设置监听器以处理用户交互</li>
+<li>访问外部模型数据</li>
+</ol>
+<h2 id="翻转屏幕对生命周期的影响"><a href="#翻转屏幕对生命周期的影响" class="headerlink" title="翻转屏幕对生命周期的影响"></a>翻转屏幕对生命周期的影响</h2><p>翻转屏幕会导致<code>Activity</code>先会被销毁再重新创建，若不加以处理会导致很多意外的问题。顺序为<code>onPause()</code>,<code>onStop()</code>,<code>onDestory()</code>,<code>onCreate()</code>,<code>onStart()</code>,<code>onResume()</code></p>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/02/android/lifecycle/2016-06-02-lifecycle-basic/">https://www.ivyxjc.xyz/2016/06/02/android/lifecycle/2016-06-02-lifecycle-basic/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;生命周期&quot;&gt;&lt;a href=&quot;#生命周期&quot; class=&quot;headerlink&quot; title=&quot;生命周期&quot;&gt;&lt;/a&gt;生命周期&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;`onCreate()``&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;onStart()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_lifecycle" scheme="https://www.ivyxjc.xyz/tags/android-lifecycle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sunshine开发实战:数据持久化</title>
+    <link href="https://www.ivyxjc.xyz/2016/06/02/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-02-data-persistence/"/>
+    <id>https://www.ivyxjc.xyz/2016/06/02/android/开发实战/Sunshine开发实战/2016-06-02-data-persistence/</id>
+    <published>2016-06-01T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.343Z</updated>
+    
+    <content type="html"><![CDATA[<p>##　Sunshine应用数据存储总体框架<br><img src="http://oezmbgg4j.bkt.clouddn.com/sunshine_data_persistence.png" alt=""></p>
+<h2 id="WeatherContract"><a href="#WeatherContract" class="headerlink" title="WeatherContract"></a>WeatherContract</h2><p>A contract is an agreement between the data model, storeage, and views, presentation, describing how information is accessed.<br>事实上就是在一个类中规定好所有相关的数据表中相应的表名,列名等等.</p>
+<h2 id="WeatherDBHelper"><a href="#WeatherDBHelper" class="headerlink" title="WeatherDBHelper"></a>WeatherDBHelper</h2><p>创建数据库并进行初始化</p>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/06/02/android/开发实战/Sunshine开发实战/2016-06-02-data-persistence/">https://www.ivyxjc.xyz/2016/06/02/android/开发实战/Sunshine开发实战/2016-06-02-data-persistence/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##　Sunshine应用数据存储总体框架&lt;br&gt;&lt;img src=&quot;http://oezmbgg4j.bkt.clouddn.com/sunshine_data_persistence.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;WeatherContract&quot;&gt;&lt;
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_data_persistence" scheme="https://www.ivyxjc.xyz/tags/android-data-persistence/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何处理耗时操作(使用AsyncTask, AsyncAdapter)</title>
+    <link href="https://www.ivyxjc.xyz/2016/05/15/android/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/2016-05-15-async/"/>
+    <id>https://www.ivyxjc.xyz/2016/05/15/android/并发编程/2016-05-15-async/</id>
+    <published>2016-05-14T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.321Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用<code>AsyncTask</code>虽然可以非常简单将耗时操作与<code>UI线程</code>分开, 但是仍是耗时操作和<code>Activity</code>的生命周期绑定在了一起, 那么可能翻转屏幕就会使得该操作中断. 所以使用<code>Service</code>是更好的方法, <code>google</code>也给出了专用的解决方案, 使用<code>AsyncAdapter</code>.</p>
+<p><img src="http://oezmbgg4j.bkt.clouddn.com/async_1.png" alt=""></p>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/05/15/android/并发编程/2016-05-15-async/">https://www.ivyxjc.xyz/2016/05/15/android/并发编程/2016-05-15-async/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用&lt;code&gt;AsyncTask&lt;/code&gt;虽然可以非常简单将耗时操作与&lt;code&gt;UI线程&lt;/code&gt;分开, 但是仍是耗时操作和&lt;code&gt;Activity&lt;/code&gt;的生命周期绑定在了一起, 那么可能翻转屏幕就会使得该操作中断. 所以使用&lt;code&gt;Servic
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android_async" scheme="https://www.ivyxjc.xyz/tags/android-async/"/>
+    
+      <category term="android_thread" scheme="https://www.ivyxjc.xyz/tags/android-thread/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Volley的介绍和一些相关用法</title>
+    <link href="https://www.ivyxjc.xyz/2016/05/13/android/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/2016-05-13-volley/"/>
+    <id>https://www.ivyxjc.xyz/2016/05/13/android/第三方库/2016-05-13-volley/</id>
+    <published>2016-05-12T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.375Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Use-newRequestQueue和发送Request"><a href="#Use-newRequestQueue和发送Request" class="headerlink" title="Use newRequestQueue和发送Request"></a>Use newRequestQueue和发送Request</h2><p>使用<code>RequestQueue</code>并向其中传递<code>Request</code>对象可以.<code>RequestQueue</code>管理和网络操作相关的一些线程,b</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Instantiate the RequestQueue.</span></div><div class="line">RequestQueue queue = Volley.newRequestQueue(<span class="keyword">this</span>);</div><div class="line">String url =<span class="string">"http://www.google.com"</span>;</div><div class="line"></div><div class="line"><span class="comment">// Request a string response from the provided URL.</span></div><div class="line">StringRequest stringRequest = <span class="keyword">new</span> StringRequest(Request.Method.GET, url,</div><div class="line">            <span class="keyword">new</span> Response.Listener&lt;String&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(String response)</span> </span>&#123;</div><div class="line">        <span class="comment">// Display the first 500 characters of the response string.</span></div><div class="line">        mTextView.setText(<span class="string">"Response is: "</span>+ response.substring(<span class="number">0</span>,<span class="number">500</span>));</div><div class="line">    &#125;</div><div class="line">&#125;, <span class="keyword">new</span> Response.ErrorListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError error)</span> </span>&#123;</div><div class="line">        mTextView.setText(<span class="string">"That didn't work!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Add the request to the RequestQueue.</span></div><div class="line">queue.add(stringRequest);</div></pre></td></tr></table></figure>
+<h2 id="取消一个Request"><a href="#取消一个Request" class="headerlink" title="取消一个Request"></a>取消一个Request</h2><p>可以使用<code>cacel</code>方法取消一个Request,防止其总是在连接网络.</p>
+<p>所以常在<code>onStop()</code>方法中调用<code>cancel</code>相关方法.</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ublic <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> TAG = <span class="string">"MyTag"</span>;</div><div class="line">StringRequest stringRequest; <span class="comment">// Assume this exists.</span></div><div class="line">RequestQueue mRequestQueue;  <span class="comment">// Assume this exists.</span></div><div class="line"></div><div class="line"><span class="comment">// Set the tag on the request.</span></div><div class="line">stringRequest.setTag(TAG);</div><div class="line"></div><div class="line"><span class="comment">// Add the request to the RequestQueue.</span></div><div class="line">mRequestQueue.<span class="built_in">add</span>(stringRequest);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span> <span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onStop();</div><div class="line">    <span class="keyword">if</span> (mRequestQueue != <span class="keyword">null</span>) &#123;</div><div class="line">        mRequestQueue.cancelAll(TAG);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/05/13/android/第三方库/2016-05-13-volley/">https://www.ivyxjc.xyz/2016/05/13/android/第三方库/2016-05-13-volley/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      Volley库可以非常方便得进行网络操作.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="volley" scheme="https://www.ivyxjc.xyz/tags/volley/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android编程中的一些常见问题和解决办法</title>
+    <link href="https://www.ivyxjc.xyz/2016/05/11/android/2016-05-11-android-qa/"/>
+    <id>https://www.ivyxjc.xyz/2016/05/11/android/2016-05-11-android-qa/</id>
+    <published>2016-05-10T16:00:00.000Z</published>
+    <updated>2016-10-14T00:56:30.280Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-如何解决有些函数只能接受String而无法接受Int"><a href="#1-如何解决有些函数只能接受String而无法接受Int" class="headerlink" title="1.如何解决有些函数只能接受String而无法接受Int"></a>1.如何解决有些函数只能接受<code>String</code>而无法接受<code>Int</code></h3><p>这样就无法使用<code>R.string...</code>.</p>
+<p>解决方法:<br><br><code>getResources().getString(R.string.aaa))</code></p>
+<hr>
+<p>本作品采用知识共享署名 4.0 中国大陆许可协议进行许可，欢迎转载，但转载请注明来自Ivyxjc，并保持转载后文章内容的完整。本人保留所有版权相关权利。</p>
+<p>本文链接：<a href="https://www.ivyxjc.xyz/2016/05/11/android/2016-05-11-android-qa/">https://www.ivyxjc.xyz/2016/05/11/android/2016-05-11-android-qa/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      Android开发中常见的一些细节问题.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://www.ivyxjc.xyz/tags/android/"/>
+    
+      <category term="java" scheme="https://www.ivyxjc.xyz/tags/java/"/>
+    
+  </entry>
+  
+</feed>
