@@ -6,6 +6,11 @@ tags: [android,android_lifecycle]
 keywords:
 description:
 ---
+
+Android中Activity的生命周期. <br>
+`onCreate()`-->`onStart()`-->`onResume()`-->`onPause()`-->`onPause()`-->`onDestory()`
+<!--more-->
+
 ## 生命周期
 1. `onCreate()``
 2. `onStart()`

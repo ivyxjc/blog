@@ -5,7 +5,7 @@ title: adb常用命令
 category: Android
 tags: [android,android_adb]
 keywords:
-description:
+description: adb中常用的命令
 ---
 
 ## 设备相关

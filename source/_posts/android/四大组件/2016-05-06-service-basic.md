@@ -5,7 +5,7 @@ title: Service
 category: Android
 tags: [android , android_service]
 keywords:
-description:
+description: 服务的生命周期以及如何调用服务.
 ---
 
 ## 服务的生命周期

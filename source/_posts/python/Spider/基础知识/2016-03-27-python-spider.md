@@ -5,7 +5,7 @@ title: Python Spider入门
 category: Python
 tags: [python,spider,pythonspider]
 keywords:
-description:
+description: 利用`urllib.request.Request(url)`获取网络中的信息. 且可以设置Header, http methods, 代理等.
 ---
 
 ## 添加header和data

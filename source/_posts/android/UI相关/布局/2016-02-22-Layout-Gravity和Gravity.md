@@ -5,7 +5,7 @@ title: Layout_Gravity和Gravity
 category: Android
 tags: [android,android_layout]
 keywords:
-description:
+description: LayoutGravity和Gravity的区别
 ---
 
 ## Android Layout_Gravity和Gravity

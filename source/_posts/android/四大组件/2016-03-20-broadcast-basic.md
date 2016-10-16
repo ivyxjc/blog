@@ -5,7 +5,7 @@ title: 广播机制初步
 category: Android
 tags: [android,android_broadcast]
 keywords:
-description:
+description: 广播分为有序广播( Ordered broadcasts)和标准广播( Normal broadcasts). 注册方式还分为动态注册和静态注册.
 ---
 
 ## 分类

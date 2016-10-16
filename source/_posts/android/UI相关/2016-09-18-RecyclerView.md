@@ -5,7 +5,8 @@ title: RecyclerView
 category: Android
 tags: [android,UI,RecyclerView]
 keywords:
-description:
+description: 如何使用RecyclerView
+toc: true
 ---
 
 ## RecyclerView 设置布局格式

@@ -104,6 +104,10 @@ mButtonForbidRefresh.setOnClickListener(new View.OnClickListener() {
     }
 ```
 
+`menu.findItem(int id)`<br>
+
+`menu.getItem(int index)`
+
 ### onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别
 `onCreateOptionsMenu(Menu menu)`只在最初的时候会调用每次点击menu都会
 调用一次`onPrepareOptionsMenu(Menu menu)`.使用`invalidateOptionsMenu()`

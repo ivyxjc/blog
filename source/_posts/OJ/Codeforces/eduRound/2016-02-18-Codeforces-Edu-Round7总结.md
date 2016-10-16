@@ -1,11 +1,11 @@
 ---
 author: ivyxjc
 date: 2016-02-18
-title:
+title: Codeforces Education Round7
 category: OJ
 tags: [格式化输出,onlinejudge,io,线段树,区间查询]
 keywords:
-description:
+description: Codeforces Education Round7几道题目的解答
 ---
 
 [题目网址](http://codeforces.com/contest/622/)
@@ -13,7 +13,7 @@ description:
 ## A:Infinite Sequence
 
 
-A题比较简单,主要就利用公式$$ \sum_{k=1}^n k=\frac {(1+n)*n}{2} $$来确定距离所要求的数字最近的一个1所在的位置。然后就可得到该数值了。<br>
+A题比较简单,主要就利用公式$ \sum_{k=1}^n k=\frac {(1+n)* n}{2} $来确定距离所要求的数字最近的一个1所在的位置。然后就可得到该数值了。<br>
 代码如下：
 
 ### 代码

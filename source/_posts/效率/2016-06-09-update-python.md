@@ -8,6 +8,7 @@ keywords:
 description:
 ---
 Centos默认的python使用的是`python2.6`,我常用的是`python3.5`,所以需要升级python.
+<!--more-->
 
 安装过程:
 

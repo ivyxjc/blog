@@ -5,9 +5,11 @@ title: 跨程序共享数据
 category: Android
 tags: [android,android_data]
 keywords:
-description: 可以利用`getContentResolver()`获取`ContentResolver`. `ContentResolver`中提供了一系列方法用于对数据进行CRUD操作.
+description:
 ---
 
+可以利用`getContentResolver()`获取`ContentResolver`. `ContentResolver`中提供了一系列方法用于对数据进行CRUD操作.
+<!--more-->
 ## ContentProvider
 
 通过`getContentResolver()`获取`ContentResolver`的实例，`ContentResolver`中提供了一系列方法用于对数据进行CRUD操作.
@@ -29,12 +31,12 @@ content://com.example.app.provider/table1
 需要将内容`URI`解析成`Uri`对象才可以作为参数传入
 
 ```java
-Uri uri=Uri.parse("content://com.example.app.provider/table1);
+Uri uri=Uri.parse("content://com.example.app.provider/table1");
 ```
 
 ### 查询操作
 
-```jaav
+```java
 Cursor cursor=getContentResolver().query(uri,projection,selection,selectionArgs,orderBy);
 ```
 

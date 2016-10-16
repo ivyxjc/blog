@@ -5,7 +5,7 @@ title: Notification初步
 category: Android
 tags: [android,android_notification]
 keywords:
-description:
+description: 如何设置Notificaton
 ---
 
 ## 通知

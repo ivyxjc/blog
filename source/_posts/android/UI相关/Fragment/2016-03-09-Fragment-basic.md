@@ -5,7 +5,7 @@ title: Fragment初步
 category: Android
 tags: [android,android_fragment,android_UI]
 keywords:
-description:
+description: 如何在应用中使用Fragment
 ---
 
 ## Fragment概要

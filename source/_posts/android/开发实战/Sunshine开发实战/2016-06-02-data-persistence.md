@@ -5,7 +5,7 @@ title: Sunshine开发实战:数据持久化
 category: Android
 tags: [android,android_data_persistence]
 keywords:
-description:
+description: 数据持久化
 ---
 
 ##　Sunshine应用数据存储总体框架

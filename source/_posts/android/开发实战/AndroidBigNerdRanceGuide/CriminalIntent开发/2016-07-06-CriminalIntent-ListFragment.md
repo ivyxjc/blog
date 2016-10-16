@@ -5,7 +5,7 @@ title: CriminalIntent程序中ListFragment相关内容
 category: Android
 tags: [android,android_adapter]
 keywords:
-description:
+description: 如何使用ListFragment.
 ---
 
 ## 定制adapter

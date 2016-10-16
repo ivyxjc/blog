@@ -5,7 +5,7 @@ title: ActionBar PopuMenu
 category: Android
 tags: [android,android_UI,android_fragment]
 keywords:
-description:popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.
+description: popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.
 ---
 
 ## PopupMenu

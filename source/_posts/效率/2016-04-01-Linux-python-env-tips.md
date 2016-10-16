@@ -1,11 +1,11 @@
 ---
 author: ivyxjc
 date: 2016-04-01
-title: 虚拟机环境搭建和相关问题解决
+title: 虚拟机环境搭建python以及相关问题解决
 category: 效率
 tags: [faq,python,spider,bs4]
 keywords:
-description:
+description: 如何在linux虚拟机环境下搭建python
 ---
 
 ## 安装pip

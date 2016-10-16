@@ -5,7 +5,7 @@ title: Sunshine开发实战:架构(与官方原版有一些不同)
 category: Android
 tags: [android]
 keywords:
-description:
+description: Sunshine开发实战
 ---
 
 ## 搜索
