@@ -38,7 +38,7 @@ android:tag 提供一个唯一的字符串tag
 ————fragment_2.xml<br>
 ————activity_main.xml<br>
 
-**Fragment1.java**利用**fragment_1.xml**返回一个**view**，**activity.xml**中的**android:name="com.jc.fragmentbasic.FragmentFirst"**，然后**MainActivity**调用**setContentView(R.layout.activity_main);**
+**Fragment1.java**利用**fragment_1.xml**返回一个**view**，**activity.xml**中的**android:name="com.jc.fragmentbasic.FragmentFirst"**，然后**MainActivity**调用`setContentView(R.layout.activity_main);``
 
 
 ### fragment_1和fragment_2.xml和activity_main.xml
