@@ -5,7 +5,7 @@ title: CriminalIntent程序中Fragment相关内容
 category: Android
 tags: [android,android_UI]
 keywords:
-description:
+description: 如何使用Fragment
 ---
 
 ## Activity中托管UI fragment有两种方式：
