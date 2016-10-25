@@ -35,3 +35,68 @@ Lswo of Demeter(LOD) , 最少知识f原则(Least Knowledge Principle))
 Open Close Principle(OCP)
 
 一个软件实体如类, 模块和函数等应该对扩展开放, 对修改关闭.
+
+### 实例
+```java
+interface IBook{
+
+    public String getName();
+
+    public int getPrice();
+
+    public String getAuthor();
+}
+
+class NovelBook implements IBook{
+    private String name;
+    private int price;
+    private String author;
+
+    public NovelBook(String name, int price, String author){
+        this.name=name;
+        this.price=price;
+        this.author=author;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
+    @Override
+    public String getAuthor() {
+        return author;
+    }
+}
+```
+
+如果将来要搞打折, 一般可能会用以下两个方法来解决:
+
+1. 在接口中添加`getOffPrice()`方法. 但是这需要对每一个实现`IBook`接口的实现类都添加该方法, 工作繁琐. 且接口应该是稳定且可靠的, 不应该经常发生变化.
+2. 修改实现类, 直接在`getPrice()`中实现打折处理, 但是如果仍需要知道原价是多少, 就会出问题.
+3. 通过扩展实现
+
+添加一个子类
+
+```java
+class OffNovelBook extends NovelBook{
+
+    public OffNovelBook(String name,int price, String author){
+        super(name,price,author);
+    }
+
+    @Override
+    public int getPrice(){
+        int selfPrice=super.getPrice();
+        int offPrice=selfPrice*90/100;
+        return offPrice;
+    }
+}
+```
+
+![](http://oezmbgg4j.bkt.clouddn.com/ocp_.jpg)
