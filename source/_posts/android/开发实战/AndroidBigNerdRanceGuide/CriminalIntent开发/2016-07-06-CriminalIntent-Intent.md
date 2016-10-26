@@ -3,7 +3,7 @@ author: ivyxjc
 date: 2016-07-06
 title: CriminalIntent程序中Fragment，Activity通信
 category: Android
-tags: [android,android_adapter]
+tags: [android,android_fragment,android_activity,android_adapter]
 keywords:
 description: 使用Intent在Fragment, Activity中进行通信.
 ---

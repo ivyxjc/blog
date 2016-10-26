@@ -1,0 +1,108 @@
+---
+author: ivyxjc
+date: 2016-10-26
+title: 不同容器类是否线程安全
+category: OO
+tags: [Java, oncurrency]
+keywords:
+description:
+toc: true
+---
+
+|非线程安全|线程安全|
+|---|---|
+|`ArrayList`<br> `LinkedList`|`Vector`|
+|`HashMap`|`HashTable`|
+|`StringBuilder`|`StringBuffer`|
+
+<!--more-->
+
+
+## 区别
+
+容器类线程安全, 非线程安全的区别可以用下面这个例子来表述:
+
+以`ArrayList`和`Vector`为例, 同时建立100个线程, 每个线程都向容器中添加100个元素,
+最后统计容器内元素的数量, 对于`ArrayList`来说, 最后的量并不一定是10000个, 甚至会出现`IndexOutofBoundsException`, 但是对于`Vector`来说, 最后的量一定是10000个, 且不会出现任何异常. 这便是线程安全与非线程安全的一个直观表现.
+
+### 非线程安全 != 多线程下不可使用
+
+非线程安全并不意味这不可以在多线程环境下不可使用, 上述问题出现在多个线程操作同一个`ArrayList`对象, 如果一个`ArrayList`只在一个线程下进行操作, 还是可以使用`ArrayList`的.
+
+### 如何使非线程安全容器类变得线程安全
+
+使用`List<Object> list = Collections.synchronizedList(new ArrayList<Object>());`可以使`list`变得线程安全.
+
+## 造成非线程安全的原因
+
+一般来说, 造成非线程安全主要有两个原因:
+1. 一个操作不是原子性操作
+2. 执行过程中可能被中断
+
+查看`ArrayList`关于`add(E e)`的相关源码:
+
+```java
+public boolean add(E e) {
+    ensureCapacityInternal(size + 1);  // Increments modCount!!
+    elementData[size++] = e;
+    return true;
+}
+
+private void ensureCapacityInternal(int minCapacity) {
+    if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {
+        minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
+    }
+
+    ensureExplicitCapacity(minCapacity);
+}
+
+private void ensureExplicitCapacity(int minCapacity) {
+    modCount++;
+
+    // overflow-conscious code
+    if (minCapacity - elementData.length > 0)
+        grow(minCapacity);
+}
+
+private void grow(int minCapacity) {
+    // overflow-conscious code
+    int oldCapacity = elementData.length;
+    int newCapacity = oldCapacity + (oldCapacity >> 1);
+    if (newCapacity - minCapacity < 0)
+        newCapacity = minCapacity;
+    if (newCapacity - MAX_ARRAY_SIZE > 0)
+        newCapacity = hugeCapacity(minCapacity);
+    // minCapacity is usually close to size, so this is a win:
+    elementData = Arrays.copyOf(elementData, newCapacity);
+}
+```
+### list中含有null的原因
+
+即使不发生`IndexOutofBoundsException`异常, 最后的元素总数也不全都是100000个.
+问题出现在`add(E e)`中的`elementData[size++] = e;`, 这句代码大致会分成以下两步:
+
+1. `elementData[size] = e;`
+2. `size++``
+
+如果线程A执行完第1步中断, 线程B开执行add, 执行到第1步时候因为`size`还未+1, 所以线程B仍会将e赋值给`elementData[size]`, 之后线程B执行+1操作, 线程A也执行+1操作, 也就意味着,并没有对 `elementData[size+1]`进行赋值, 其值也就为null.
+
+### 元素总量不符合预期的原因
+
+
+### IndexOutofBoundsException产生原因
+ArrayList实际上也是一个数组, 只不过可以自动扩容, 出现`IndexOutofBoundsException`说明在某些情况下, 还未扩容, 就添加元素进去了.
+
+例如,线程A开始执行`add()`, 执行到`ensureExplicitCapacity(int minCapacity)`中的条件语句时, 如果此时添加的元素总数==数组的长度-1, 那么并不会执行扩容操作. 但是如果此时, 线程A中断, 线程B开始执行, 此时由于线程A还未添加元素, 元素总数仍==数组的长度-1, 添加元素, 此时若线程A恢复, 开始执行添加元素, 由于此时元素总数==数组的长度, 再向其中添加元素就会抛出`IndexOutofBoundsException`异常.
+
+### Vector
+
+`Vector`中关于`add(E e)`的相关源码
+
+```java
+public synchronized boolean add(E e) {
+    modCount++;
+    ensureCapacityHelper(elementCount + 1);
+    elementData[elementCount++] = e;
+    return true;
+}
+```

@@ -3,7 +3,7 @@ author: ivyxjc
 date: 2016-04-05
 title: Handler与多线程
 category: Android
-tags: android,android_thread
+tags: [android,concurrency]
 status: publish
 description: Handler是android中一套用来更新UI的机制，也是一套消息处理机制。在非UI线程中更新UI会报错，但是直接在OnCreate()方法中并不会报错，因为此时检查机制还未使用，但是不要这么做。必须在UI线程中更新UI。
 ---

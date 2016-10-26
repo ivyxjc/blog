@@ -3,7 +3,7 @@ author: ivyxjc
 date: 2016-03-14
 title: CriminalIntent程序中Fragment相关内容
 category: Android
-tags: [android,android_UI]
+tags: [android,android_fragment]
 keywords:
 description: 如何使用Fragment
 ---

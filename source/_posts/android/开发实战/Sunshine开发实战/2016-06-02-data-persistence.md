@@ -3,7 +3,7 @@ author: ivyxjc
 date: 2016-06-02
 title: Sunshine开发实战:数据持久化
 category: Android
-tags: [android,android_data_persistence]
+tags: [android,android_data]
 keywords:
 description: 数据持久化
 ---

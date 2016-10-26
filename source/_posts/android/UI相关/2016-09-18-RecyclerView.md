@@ -3,7 +3,7 @@ author: ivyxjc
 date: 2016-09-18
 title: RecyclerView
 category: Android
-tags: [android,UI,RecyclerView]
+tags: [android,android_UI,android_RecyclerView]
 keywords:
 description: 如何使用RecyclerView
 toc: true

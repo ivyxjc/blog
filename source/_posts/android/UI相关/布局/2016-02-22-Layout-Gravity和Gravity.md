@@ -3,7 +3,7 @@ author: ivyxjc
 date: 2016-02-22
 title: Layout_Gravity和Gravity
 category: Android
-tags: [android,android_layout]
+tags: [android,android_UI]
 keywords:
 description: LayoutGravity和Gravity的区别
 ---
