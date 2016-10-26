@@ -5,7 +5,7 @@ title: Java8默认方法
 category: OO
 tags: [Java,archive]
 keywords:
-description: Java8引入的新的语言特性--默认方法
+description: Java8引入的新的语言特性--默认方法 (他人的博客存档)
 ---
 
 [java8 默认方法](http://ebnbin.com/2015/12/20/java-8-default-methods/)

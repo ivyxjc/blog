@@ -88,6 +88,9 @@ private void grow(int minCapacity) {
 
 ### 元素总量不符合预期的原因
 
+根本原因在于自加操作不是原子性的
+
+线程B可能在线程A执行`size++`中间就开始同时执行`size++`, 这可能会使得线程A,B执行之初时size值相同, 导致元素总量小于预期.
 
 ### IndexOutofBoundsException产生原因
 ArrayList实际上也是一个数组, 只不过可以自动扩容, 出现`IndexOutofBoundsException`说明在某些情况下, 还未扩容, 就添加元素进去了.
