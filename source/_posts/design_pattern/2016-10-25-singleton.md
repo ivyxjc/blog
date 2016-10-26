@@ -94,7 +94,8 @@ class SingletonDCL{
 如果这句代码严格按照这个顺序执行,该DCL单例模式便是线程安全的, 但是事实并非如此. 原因是JVM并没有保证上述第2和第3步的执行顺序.
 也就是说执行步骤可能是1-3-2, 这种执行步骤就会出问题:
 
-    当先执行第3步时, 另一个线程B开始执行`getInstance()`, 由于此时`sInstance`已经不是`null`了, 所以线程B会返回一个还未初始化的`sInstance`, 出现了错误.
+
+当先执行第3步时, 另一个线程B开始执行`getInstance()`, 由于此时`sInstance`已经不是`null`了, 所以线程B会返回一个还未初始化的`sInstance`, 出现了错误.
 
 JVM1.5之后改善了这个问题, 在`sInstance`前加上`volatile`关键字可以确保线程安全.
 即`private static volatile SingletonDCL sInstance;`
