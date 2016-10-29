@@ -38,7 +38,9 @@ mv dir1 dir2
 
 `kill -9 xxx`:xxx是进程的PID
 
+### 显示端口占用情况
 
+`lsof -i`
 
 ## vim相关操作
 
