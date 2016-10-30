@@ -6,6 +6,7 @@ category: Linux
 tags: [linux]
 keywords:
 description: 介绍与解压, 文件操作, vim操作, 进程等相关的bash命令.
+toc: true
 ---
 
 ## 解压
@@ -21,6 +22,9 @@ unzip xxx.zip
 
 ## 文件相关操作
 
+### 空间使用情况
+
+`df -h`: 查看空间使用情况
 ### 移动
 
 
@@ -48,3 +52,10 @@ mv dir1 dir2
 
 ?pattern 光标下方查找
 /pattern 光标上方查找
+
+
+## 定时任务
+
+`crontab -l`:可以查看正在进行的定时任务
+`crontab -e`:可以进行修改
+`/etc/init.d/cron restart`: 重新该服务
