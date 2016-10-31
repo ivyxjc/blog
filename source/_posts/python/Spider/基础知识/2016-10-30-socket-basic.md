@@ -1,7 +1,7 @@
 ---
 author: ivyxjc
-date: 2016-10-23
-title: python socket边撤功能
+date: 2016-10-30
+title: python socket编程功能
 category: Python
 tags: [python,spider,socket]
 keywords:
