@@ -5,7 +5,7 @@ title: BeautifulSoup4入门
 category: Python
 tags: [python,spider,bs4]
 keywords:
-description: bs4可以非常高效地获取网页中的指定内容. 
+description: bs4可以非常高效地获取网页中的指定内容.
 ---
 
 ## 对象的种类
