@@ -23,3 +23,9 @@ toc: true
 
 1. [树莓派3的使用(Raspbian)](https://www.zybuluo.com/yangxuan/note/321467#7%E4%B8%BAssh%E5%90%AF%E7%94%A8%E4%B8%A4%E6%AD%A5%E8%AE%A4%E8%AF%81)
 2. [树莓派通过邮件上报实时IP，随时随地远程登录树莓派](http://www.kawabangga.com/posts/1398)<br>[archive.org备份页面](https://web.archive.org/web/20160731051025/http://www.kawabangga.com/posts/1398)
+3. [树莓派 挂载SAMBA（小米路由器）](http://www.itdadao.com/articles/c15a588496p0.html)<br>[archive.org备份页面](https://web.archive.org/save/http://www.itdadao.com/articles/c15a588496p0.html)
+
+
+## proxy
+
+1. [kcp安装配置教程](http://www.8dlive.com/post/371.html)<br>[archive.org备份页面](https://web.archive.org/web/20161106035844/http://www.8dlive.com/post/371.html)
