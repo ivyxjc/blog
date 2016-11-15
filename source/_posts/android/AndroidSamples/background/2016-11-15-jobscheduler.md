@@ -9,7 +9,6 @@ description: 如何利用JobScheduler API执行预定的操作
 ---
 
 ## 任务写在JobService中
-
 ```java
 public class TestJobService extends JobService {
     private static final String TAG = "SyncService";
@@ -95,3 +94,7 @@ public String getRunningProcessNames(){
         return sb.toString();
     }
 ```
+
+## 相关博客
+
+[在Android 5.0中使用JobScheduler](http://blog.csdn.net/bboyfeiyu/article/details/44809395)
