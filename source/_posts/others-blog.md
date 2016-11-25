@@ -11,9 +11,15 @@ toc: true
 
 一些比较好的博客文章留档, 防止将来要用的时候又要浪费时间找.  （时间是2100年只是为了置顶...）
 
+## android
+
+### 第三方库
+1. [给 Android 开发者的 RxJava 详解](https://gank.io/post/560e15be2dca930e00da1083)<br>[archive.org备份页面](https://web.archive.org/web/20161023043938/http://gank.io/post/560e15be2dca930e00da1083)
+2. [RxJava 与 Retrofit 结合的最佳实践](https://gank.io/post/56e80c2c677659311bed9841)<br>[archive.org备份页面](https://web.archive.org/web/20161022232218/http://gank.io/post/56e80c2c677659311bed9841)
+
 ## java
 
-### java
+### java8
 
 1. [java8 默认方法](http://ebnbin.com/2015/12/20/java-8-default-methods/)<br>[jarchive.org备份页面 ](https://web.archive.org/web/20161023233757/http://ebnbin.com/2015/12/20/java-8-default-methods/)
 
