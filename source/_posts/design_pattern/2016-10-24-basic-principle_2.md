@@ -22,7 +22,7 @@ Interface Segregation Principles(ISP)
 
 ## 迪米特法则
 
-Lswo of Demeter(LOD) , 最少知识f原则(Least Knowledge Principle))
+Law of Demeter(LOD) , 最少知识原则(Least Knowledge Principle))
 
 一个对象应该对其它对象有最少的了解, 另一个解释是只与直接的朋友通信.
 

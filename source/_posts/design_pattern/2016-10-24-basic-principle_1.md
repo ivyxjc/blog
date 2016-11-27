@@ -48,7 +48,7 @@ class Son extends Father{
 ```
 
 子类方法和父类方法, 方法名相同, 返回类型相同, 但是参数不同, 所以不是Override, 而是Overload. 在这种情况下, 如果传入`HashMap`, 子类的`doSomething()`不会被执行.
-这是**正确**的, 因为子类并没有重写父类方法, 而是重载父类方法, 所以
+这是**正确**的, 因为子类并没有重写父类方法, 而是重载父类方法, 所以如果父类的前置条件(形参) 范围宽于子类则不正确.
 
 
 ```java
@@ -84,7 +84,7 @@ public static void main(String[] args){
 ```
 
 
-如果父类的前置条件(形参) 范围宽于子类则不正确.
+
 
 ```java
 class Father {

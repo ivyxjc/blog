@@ -42,9 +42,9 @@ Java Language Specification 中规定了一个类只会被初始化一次.所以
 2. 单例模式不利于测试, 如果单例模式没有完成, 无法进行测试
 3. 于单一职责原则相冲突.
 
-### 其它实现方式
+## 其它实现方式
 
-#### 懒汉模式
+### 懒汉模式
 
 ```java
 class Singleton {
@@ -63,7 +63,7 @@ class Singleton {
 
 该实现只会在需要的时候才会进行初始化且是线程安全的, 但是每次调用`getInstance()`都会进行同步, 会浪费资源
 
-#### Double Check Lock
+### Double Check Lock
 
 ```java
 class SingletonDCL{
@@ -100,7 +100,7 @@ class SingletonDCL{
 JVM1.5之后改善了这个问题, 在`sInstance`前加上`volatile`关键字可以确保线程安全.
 即`private static volatile SingletonDCL sInstance;`
 
-#### 静态内部类单例模式
+### 静态内部类单例模式
 
 DCL单例模式并不推荐使用,《Java并发编程实践》推荐使用下面这个方法:
 
@@ -120,7 +120,7 @@ class SingletonStatic{
 
 第一次加载时, 并不会初始化`sInstance`, 只在第一调用`getInstance()`时初始化, 且该方法是安全的.
 
-#### 枚举单例
+### 枚举单例
 
 ```java
 enum SingletonEnum{
@@ -137,11 +137,11 @@ enum SingletonEnum{
 3. 可以防止反射攻击
 
 
-### 选择哪一种实现方式
+## 选择哪一种实现方式
 
 无论采用哪一种实现方式, 都要确保线程安全, 防止反序列化导致重新生成实例对象等一些问题. 具体选择哪一种实现方式取决于项目本身.
 
-### 关于序列化
+## 关于序列化
 
 除了枚举单例, 为了避免单例对象在被反序列化时重新生成对象, 必须加入以下方法
 
@@ -151,6 +151,6 @@ private Object readResolve() throws ObjectStreamException{
 }
 ```
 
-### 单例模式扩展
+## 单例模式扩展
 
 如果生成对象的数量不受限制, 可以直接使用`new`. 如果只要有一个对象, 使用单例模式即可, 若需要且只需要两个或者三个对象, 则可以按照下面的方法:

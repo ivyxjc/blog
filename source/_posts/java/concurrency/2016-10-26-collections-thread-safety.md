@@ -3,7 +3,7 @@ author: ivyxjc
 date: 2016-10-26
 title: 不同容器类是否线程安全
 category: OO
-tags: [Java, oncurrency]
+tags: [Java, concurrency]
 keywords:
 description:
 toc: true

@@ -9,8 +9,6 @@ description: 如何添加菜单项, 以及如何在运行时更改菜单项.
 ---
 
 
-```xml
-values/style
 
 ## 布局文件中添加menu
 
@@ -109,17 +107,9 @@ mButtonForbidRefresh.setOnClickListener(new View.OnClickListener() {
 `menu.getItem(int index)`
 
 ### onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别
-`onCreateOptionsMenu(Menu menu)`只在最初的时候会调用每次点击menu都会
-调用一次`onPrepareOptionsMenu(Menu menu)`.使用`invalidateOptionsMenu()`
-会直接调用onPrepareOptionsMenu(Menu menu);
+`onCreateOptionsMenu(Menu menu)`只在最初的时候会调用每次点击menu都会调用一次`onPrepareOptionsMenu(Menu menu)`.使用`invalidateOptionsMenu()`会直接调用onPrepareOptionsMenu(Menu menu);
 
 
 ### 多个Activity共用相同ActionBar
 
-如果应用包含多个 Activity，且其中某些 Activity 提供相同的选项菜单，则可考虑创建一个仅
-实现`onCreateOptionsMenu()` 和 `onOptionsItemSelected()`方法的 Activity。然后，
-为每个应共享相同选项菜单的 Activity 扩展此类。 通过这种方式，您可以管理一个用于
-处理菜单操作的代码集，且每个子级类均会继承菜单行为。若要将菜单项添加到一个
-子级 Activity，请重写该 Activity 中的 `onCreateOptionsMenu()`。
-调用 `super.onCreateOptionsMenu(menu)`，以便创建原始菜单项，
-然后使用 `menu.add()` 添加新菜单项。此外，您还可以替代各个菜单项的超类行为。
+如果应用包含多个 Activity，且其中某些 Activity 提供相同的选项菜单，则可考虑创建一个仅实现`onCreateOptionsMenu()` 和 `onOptionsItemSelected()`方法的 Activity。然后为每个应共享相同选项菜单的 Activity 扩展此类。 通过这种方式，您可以管理一个用于处理菜单操作的代码集，且每个子级类均会继承菜单行为。若要将菜单项添加到一个子级 Activity，请重写该 Activity 中的 `onCreateOptionsMenu()`。调用 `super.onCreateOptionsMenu(menu)`，以便创建原始菜单项，然后使用 `menu.add()` 添加新菜单项。此外，您还可以替代各个菜单项的超类行为。
