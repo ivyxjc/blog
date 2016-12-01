@@ -42,4 +42,59 @@ public static FragmentTab newSingleton(int titleId, int suffixId){
 
 ## 如何进行数据缓存
 
-关于图片的缓存, Glide库已经完成. 对于其它内容的缓存, 计划使用DiskLRUCache缓存.
+关于图片的缓存, Glide库已经完成
+
+其它内容的缓存使用的是序列化来完成的. 加了缓存后, 就要注意从网络中获得数据之后如何处理这些缓存的数据. 我目前选择的方法是, 一旦从网络中获取到新的
+
+
+```java
+public  static void save(Context context, String filename,Object list){
+    FileOutputStream out=null;
+    ObjectOutputStream writer=null;
+    try{
+        out=context.openFileOutput(filename, Context.MODE_PRIVATE);
+        writer=new ObjectOutputStream(out);
+        writer.writeObject(list);
+        Log.i(TAG.CACHE_UTIL,"cache list");
+    }catch (FileNotFoundException e) {
+        e.printStackTrace();
+        Log.i(TAG.CACHE_UTIL,e.toString());
+    }catch (IOException e){
+        e.printStackTrace();
+        Log.i(TAG.CACHE_UTIL,e.toString());
+    }finally {
+        try{
+            if(writer!=null){
+                writer.close();
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+}
+public static Object load(Context context,String filename){
+    FileInputStream in=null;
+    ObjectInputStream reader=null;
+    Object res=null;
+    try{
+        in=context.openFileInput(filename);
+        reader=new ObjectInputStream(in);
+        res=reader.readObject();
+    }catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }catch (IOException e){
+        e.printStackTrace();
+    }finally {
+        if(reader!=null){
+            try{
+                reader.close();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+    return res;
+}
+```
