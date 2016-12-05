@@ -6,7 +6,7 @@ category: Python
 tags: [python,generators]
 keywords:
 description: Raspberry第一次安装
-toc:true
+toc: true
 ---
 
 
