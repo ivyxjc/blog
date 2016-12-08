@@ -58,3 +58,7 @@ toc: true
 ## proxy
 
 1. [kcp安装配置教程](http://www.8dlive.com/post/371.html)<br>[archive.org备份页面](https://web.archive.org/web/20161106035844/http://www.8dlive.com/post/371.html)
+
+## 工具
+
+1. [如何合并两个git仓库](https://github.com/deercoder/0-tech-notes/blob/master/Git/git_merge_local_repos.md)<br>[archive.org备份页面](https://web.archive.org/web/20161208141359/https://github.com/deercoder/0-tech-notes/blob/master/Git/git_merge_local_repos.md)
