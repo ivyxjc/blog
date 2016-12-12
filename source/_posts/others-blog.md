@@ -20,7 +20,12 @@ toc: true
 
 ### UI
 1. [Md系列3、CoordinatorLayout 里 Toobar和TabLayout等发生的一系列故事](http://www.jianshu.com/p/1edeff139de5)<br>[archive.org备份页面](https://web.archive.org/save/http://www.jianshu.com/p/1edeff139de5)
-2. [下拉刷新SwipeRefreshLayout](https://github.com/hanks-zyh/SwipeRefreshLayout)<br>[archive.org备份页面]
+2. [下拉刷新SwipeRefreshLayout](https://github.com/hanks-zyh/SwipeRefreshLayout)<br>[archive.org备份页面]()
+3. [Android LayoutInflater原理分析，带你一步步深入了解View(一)](http://blog.csdn.net/guolin_blog/article/details/12921889)<br>[archive.org备份页面](https://web.archive.org/web/20161021223718/http://blog.csdn.net/guolin_blog/article/details/12921889)
+4. [Android视图绘制流程完全解析，带你一步步深入了解View(二)](http://blog.csdn.net/guolin_blog/article/details/16330267)<br>[archive.org备份页面](https://web.archive.org/web/20161021215349/http://blog.csdn.net/guolin_blog/article/details/16330267)
+5. [Android视图状态及重绘流程分析，带你一步步深入了解View(三)](http://blog.csdn.net/guolin_blog/article/details/17045157)<br>[archive.org备份页面](https://web.archive.org/web/20151023100537/http://blog.csdn.net/guolin_blog/article/details/17045157)
+6. [Android自定义View的实现方法，带你一步步深入了解View(四)](http://blog.csdn.net/guolin_blog/article/details/17357967)<br>[archive.org备份页面](https://web.archive.org/save/http://blog.csdn.net/guolin_blog/article/details/17357967)
+7. [Understanding Android's LayoutInflater.inflate()](https://www.bignerdranch.com/blog/understanding-androids-layoutinflater-inflate/)<br>[archive.org备份页面](https://web.archive.org/web/20160604203134/https://www.bignerdranch.com/blog/understanding-androids-layoutinflater-inflate/)
 
 ## java
 
