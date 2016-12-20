@@ -77,6 +77,17 @@ public class CDPlayerConfig {
 
 
 
+### 添加注解自动装配
+
+```java
+@Autowired
+public void setCompactDisc(CompactDisc cd){
+    this.cd = cd;
+}
+```
+
+如果没有匹配的bean, 在创建应用上下文时, Spring会抛出一个异常. 可以使用`@Autowired(required=false)`来避免此异常. 此时, Spring会尝试自动装箱, 但是如果没有匹配的bean时, Spring会让该bean处于未装配的状态. 如果此时调用未装配状态的属性时 可以能会抛出NullPointerException.
+
 ## Java装配bean
 
 
