@@ -1,7 +1,7 @@
 ---
 author: ivyxjc
 date: 2016-12-25
-title: Spring装配bean
+title: Spring高级装配
 category: JavaWeb
 tags: [javaweb,spring]
 keywords:
