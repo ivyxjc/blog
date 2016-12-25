@@ -84,5 +84,5 @@ limit: 40
 deploy:
 - type: git
   repo: https://git.coding.net/ivyxjc/ivyxjc.coding.net.git,master
-# - type: git
-#   repo: https://github.com/ivyxjc/ivyxjc.github.io.git,master
+- type: git
+  repo: https://github.com/ivyxjc/ivyxjc.github.io.git,master
