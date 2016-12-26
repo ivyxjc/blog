@@ -44,7 +44,7 @@ public class SgtPeppers implements CompactDisc{
 
 在类上使用@Component注解, 这个注解表明该类会作为组件类.
 
-###　开启组件扫描
+### 开启组件扫描
 
 
 #### Java开启组件扫描

@@ -175,3 +175,49 @@ public class ClassName implements InterfaceName{
 ```
 
 ## Bean的作用域
+
+
+Spring定义了多个作用域:
+
+1. 单例(Singleton): 在整个应用中, 只创建一个实例( 默认实现) 
+2. 原型(Prototype): 每次注入或者通过Spring应用上下文获取的时候, 都会创建一个新的实例
+3. 会话(Session): 在Web应用中, 为每一个回话创建一个bean实例
+4. 请求(Request): 在Web应用中, 为每个请求创建一个bean实例
+
+
+如果要使用单例以外的作用域, 可以使用@Scope注解.
+
+使用组件扫描来发现和声明bean, 则可以在bean的类上使用@Scope注解
+
+
+```java
+@Componet
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+public class ClassName{
+
+}
+```
+
+使用`@Scope("prototype")`也是可以的, 但是更易出错.
+
+同样可以在Java配置中来声明原型bean
+
+
+```java
+@Bean
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+public ClassName getArg(){
+    ....
+}
+```
+
+使用XML文件也可以来配置bean.
+
+```xml
+<bean id="id"
+    class="ClassName"
+    scope="prototype" />
+```
+
+## 运行时注入
+
