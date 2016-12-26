@@ -4,8 +4,8 @@ date: 2016-12-7
 title: 如何下拉, 上拉刷新数据
 category: Android
 tags: [android,android_UI,android_refresh]
-keywords:
-description: 如何下拉, 上拉刷新数据: 本文介绍SwipeRefreshLayout,
+keywords: 
+description: 如何下拉,上拉刷新数据.本文介绍SwipeRefreshLayout,
 toc: true
 ---
 
