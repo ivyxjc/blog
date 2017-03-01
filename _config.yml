@@ -82,7 +82,7 @@ limit: 40
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-# - type: git
-#   repo: https://git.coding.net/ivyxjc/ivyxjc.coding.net.git,master
 - type: git
-  repo: https://github.com/ivyxjc/ivyxjc.github.io.git,master
+  repo: https://git.coding.net/ivyxjc/ivyxjc.coding.net.git,master
+# - type: git
+#   repo: https://github.com/ivyxjc/ivyxjc.github.io.git,master
