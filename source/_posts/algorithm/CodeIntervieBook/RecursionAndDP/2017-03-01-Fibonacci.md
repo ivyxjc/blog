@@ -2,7 +2,7 @@
 author: ivyxjc
 date: 2017-03-01
 title: Fibonacci数列及相关问题
-category: OJ
+category: Algorithm
 tags: [Fibonacci,dynamic_programming]
 keywords:
 description: 与Fibonacci数列相关的问题的解法

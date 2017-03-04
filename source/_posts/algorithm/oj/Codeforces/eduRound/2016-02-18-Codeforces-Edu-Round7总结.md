@@ -2,7 +2,7 @@
 author: ivyxjc
 date: 2016-02-18
 title: Codeforces Education Round7
-category: OJ
+category: Algorithm
 tags: [格式化输出,onlinejudge,io,线段树,区间查询]
 keywords:
 description: Codeforces Education Round7几道题目的解答
