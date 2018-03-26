@@ -7,6 +7,7 @@ keywords: centos7
 description:
 ---
 
+centos7环境搭建及相关配置。
 
 # 环境配置
 

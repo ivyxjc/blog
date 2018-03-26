@@ -1,6 +1,6 @@
 ---
 author: ivyxjc
-date: 2016-11-216
+date: 2016-11-21
 title: Translucent Bar
 category: Android
 tags: [android,android_UI]
