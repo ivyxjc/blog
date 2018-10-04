@@ -38,7 +38,7 @@ public static int fibRecursion(int n) {
 
 迭代的解法即将已经解决的位置处的数存储, 之后直接调用, 不用再计算
 
-时间复杂度为O(n), 空间复杂度为O(n).
+时间复杂度为$O(n)$, 空间复杂度为$O(n)$.
 
 ```java
 public static int fibIteration(int n) {
@@ -58,7 +58,7 @@ public static int fibIteration(int n) {
 }
 ```
 
-仅记录前两个值, 空间复杂度为O(1)
+仅记录前两个值, 空间复杂度为$O(1)$
 
 ```java
 public static BigInteger fibIteration(int n) {
