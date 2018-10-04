@@ -20,7 +20,7 @@ mathjax: true
 
 ### 递归的解法
 
-递归的解法是最基础, 也是最好理解, 但是时间复杂度很高, 为 $O(2^n)$ ,空间复杂度为O(2^n)
+递归的解法是最基础, 也是最好理解, 但是时间复杂度很高, 为 $O(2^n)$ ,空间复杂度为$O(2^n)$
 
 ```java
 public static int fibRecursion(int n) {
