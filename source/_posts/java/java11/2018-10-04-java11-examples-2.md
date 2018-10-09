@@ -1,7 +1,7 @@
 ---
 author: ivyxjc
 date: 2018-10-04
-title: Java11 的新特性(下)
+title: Java 11 的新特性(下)
 category: Java
 tags: [Java]
 keywords:
