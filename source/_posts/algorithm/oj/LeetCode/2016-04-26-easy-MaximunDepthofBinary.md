@@ -3,7 +3,7 @@ author: ivyxjc
 date: 2016-04-26
 title: Maximum Depth of Binary Tree
 category: Algorithm
-tags: [recursion]
+tags: [algorithm-recursion]
 keywords:
 description: 寻找二叉树最长路径
 ---

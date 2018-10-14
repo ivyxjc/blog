@@ -11,7 +11,7 @@ toc: true
 
 
 Kafka支持多种安全验证方式，本文主要介绍使用用户名/密码的方式的方式认证Kafka。
-
+<!--more-->
 ### Zookeeper 相关更改
 
 `zookeeper-server-start.bat`（win）

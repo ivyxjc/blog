@@ -9,7 +9,7 @@ description: 设计模式中的单例模式
 toc: true
 ---
 
-Ensure a class has only one instance, and provide a global point of access to it.
+>In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system. The concept is sometimes generalized to systems that operate more efficiently when only one object exists, or that restrict the instantiation to a certain number of objects. The term comes from the mathematical concept of a singleton
 
 
 ## 简介
@@ -40,7 +40,7 @@ Java Language Specification 中规定了一个类只会被初始化一次.所以
 
 1. 单例模式一般没有接口, 扩展很困难, 除了修改代码基本上没有第二种途径可以实现
 2. 单例模式不利于测试, 如果单例模式没有完成, 无法进行测试
-3. 于单一职责原则相冲突.
+3. 与单一职责原则相冲突.
 
 ## 其它实现方式
 
@@ -118,7 +118,7 @@ class SingletonStatic{
 }
 ```
 
-第一次加载时, 并不会初始化`sInstance`, 只在第一调用`getInstance()`时初始化, 且该方法是安全的.
+第一次加载时, 并不会初始化`sInstance`, 只在第一调用`getInstance()`时初始化, 且该方法是线程安全的.
 
 ### 枚举单例
 

@@ -12,6 +12,8 @@ toc: true
 
 众所周知，++操作并不是线程安全的。这篇文章主要讲述其非线程安全的原因以及相关问题。
 
+<!--more-->
+
 ## 使用volatile修饰仍不是线程安全的原因
 
 `i++`分为以下3步：
@@ -60,7 +62,12 @@ public class ThreadTest implements Runnable {
 
 ### 使用原子类
 
-原子类可以的单一操作都是原子性的。它的实现并不是依赖于加锁而是使用CAS
+原子类可以的单一操作都是原子性的。它的实现并不是依赖于加锁而是使用CAS。
+
+CAS的基本原理如下：
+
+从内存位置V中读取值A，并根据A计算值B，然后再将值B写回V。
+但是写回V之前，会检查内存位置V的值是否等于A，如果不等于，就不会将值写回V。而是重新进行一次上述操作。
 
 ```java
 public class ThreadTest2 implements Runnable {

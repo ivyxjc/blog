@@ -9,6 +9,11 @@ description:
 toc: true
 ---
 
+
+Java 11中的新特性（下）
+
+<!--more-->
+
 ## JEP 309 Dynamic Class-File Constants 
 JVM规范中在常量池中添加一个新的类型 CONSTANT_Dynamic
 

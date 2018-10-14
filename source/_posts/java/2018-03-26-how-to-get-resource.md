@@ -13,7 +13,9 @@ toc: true
 
 在maven，gradle等构建工具构建的项目，resouces文件夹下的内容默认在classpath下面。
 
-所以可以直接用`this.class.getClassLoader.getResource(...)`来获取对应的文件
+所以可以直接用`this.class.getClassLoader.getResource(...)`来获取对应的文件。
+
+<!--more-->
 
 ##  Class与ClassLoader.getResource()之间的区别
 

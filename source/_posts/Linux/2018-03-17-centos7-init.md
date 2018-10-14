@@ -7,8 +7,8 @@ keywords: centos7
 description:
 ---
 
-centos7环境搭建及相关配置。
-
+centos7环境搭建及相关配置。介绍如何开启SSH，安装Java，MySql，Python，Git，Docker。
+<!--more-->
 # 环境配置
 
 ## 更改ssh端口以及防火墙开放端口

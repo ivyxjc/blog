@@ -9,7 +9,9 @@ description:
 toc: true
 ---
 
+Java 11中的新特性（上）
 
+<!--more-->
 
 ## JEP 181 Nest-Based Acess Control
 这一提案是为了增强自Java 1.1即引入的嵌套类设计。

@@ -3,7 +3,7 @@ author: ivyxjc
 date: 2016-04-26
 title: 283 将0移到数组末尾
 category: Algorithm
-tags: [array,twoPointer]
+tags: [algorithm-array,algorithm-two-pointer]
 keywords:
 description: 将数组中的0移动数组尾部, 其它数字顺序不变. 必须就地完成.
 ---
